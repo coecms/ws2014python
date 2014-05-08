@@ -1,0 +1,125 @@
+====================
+Python Winter School
+====================
+
+Requirements
+============
+
+* Pre-install python on personal laptops
+
+  - Version:
+    - Python 2.7.x is preferred
+    - Python 3.x is OK
+    - Python 2.6 can be managed
+
+  - IDE: Any IDE is good
+    - IDLE
+    - IPython
+    - Python shell (Windows users may need CygWin)
+
+  - Data sets for exercises (host somewhere)
+
+  - Other Applications
+    - Panoply
+
+
+* Python Packages
+
+  - Required Packages
+    - NumPy
+    - SciPy
+    - Matplotlib
+
+  - Installation
+    - Enthought Distribution
+    - Linux dist (apt-get, yum, pacman)
+    - MacPorts, homebrew
+
+  - Provide a test script
+
+
+* Python basics
+
+  - Basic arithmetic operations
+  - Data types (list, dict, set, etc)
+  - Indexing, Slicing, etc
+  - Flow control
+  - List Comprehension, Iteration
+  - Functions
+
+* Python things to teach
+
+  - 'pass-by-referencing'
+
+
+* NumPy
+
+  - Loop vs Vectorization
+    - List vs Array vs Matrix
+    - Basic mathematical operations (np.exp, np.sin, np.pi)
+
+  - Creating arrays
+    - Basic functions: arange, zeros, empty
+    - Creating grids: meshgrid
+    - Manipulating arrays (resize, [hv]stack, [hv]split, concatenate, etc)
+    - Copying arrays: reference, shallow, deep
+
+  Exercise: 2D and 3D grid generation
+
+  - Basic Indexing
+    - Multidimensional x[i,j]
+    - Slicing: x[i,:], x[:,j]
+      - Performance considerations
+    - Generalised indexing: x[..., j]
+    - Dimension change: x[i, np.newaxis, j]
+    - Boolean array indexing
+
+  - Broadcasting Rules *Andy says this is important*
+    - Scalar: 2 * x[:]
+    - a[:,:] * b[:]
+    - b[:, np.newaxis] * a[:,:]
+
+  - Masked Arrays
+
+    Exercise: Generate an ocean topography mask
+
+  - Advanced Indexing
+    - Indices as variables:
+         indices = (1,2,3), x[indices]
+    - Ellipsis: x[(1, np.ellipsis, 2)] = x[1,...,2]
+    - Slice operators: x[(1, slice(1,4), 2)] = x[1,1:4,2]
+
+
+* SciPy
+
+  - File IO
+    - NetCDF
+    - Matlab (.mat)
+    - Text (CSV)
+
+  - Regridding, interpolation
+    -
+
+* Matplotlib
+
+  - Basic pyplot (pyplot.plot(), pyplot.show())
+    - Exercise: Plot sin(x) from -2pi to 2pi
+
+  - Saving plots to files (pdf, ps, png, etc)
+
+  - Style plots
+    - Multiple curves
+    - Color, syntax, xlabel, ylabel, etc
+
+  - "Object oriented" matplotlib
+    - Decomposition into axes and figures
+
+  - Contour plots
+    Exercise: (x - 0.5) exp(-x^2 - y^2) on [-2,2] x [-2,2]
+
+  - Image/pixel plots (imshow)
+    Exercise: Repeat using imshow
+
+  - 3D surface plots
+
+  - Subplots

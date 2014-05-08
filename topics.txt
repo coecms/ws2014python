@@ -1,0 +1,71 @@
+1. Get NetCDF and explore the dataset
+
+   - Panoply
+   - ncdump (NCO)
+   - ncview?
+
+   - NetCDF conventions
+     - Attributes (units)
+     - scale_factor, add_offset
+     - _FillValue and missing_value
+     - Unlimited axes
+     - https://www.enthought.com/products/canopy/academic/
+
+   - Possible example: SST observational data
+
+
+2. Read NetCDF data into numpy arrays
+
+   - Documentation search (provide signposts in class)
+   - import scipy.io
+   - netcdf_file()
+
+   - NetCDF formats (classic3, 64bitoffset, ?, netcdf4 full)
+
+
+#. Spherical grid generation
+
+   1. Construct uniform 1d arrays of x and y in degrees
+   2. Construct 2d lat/lon grids
+   3. Construct 2d dx, dy grids (in metres)
+
+
+#. Calculation of geostrophic velocities using slp? (atm or ocn?)
+
+   1. Gather pressure data
+   2. "Program" the difference equation
+   3. Construct Coriolis parameter (function of latitude)
+   4. Construct dx and dy as vectors (or arrays)
+   5. Calculate u and v (including time series)
+
+
+#. Masked Arrays
+
+   - Create a masked array:
+     - based on _FillValue
+     - based on topography
+
+   - Apply this mask to a 2D time series (e.g. SLP?)
+
+   - Calculate time mean SST
+   - Calculate SST along latitude
+   - Calculate over Atlantic (lat-lon bounds)
+
+
+#. SST comparison
+
+   1. Load velocity fields from files
+   OR
+   1. Load SST from model and observation? (Model: nonuniform grid?)
+
+   2. Interpolate to common grid
+   3. Diff the two
+
+
+#. Plot the output
+   1. Plot and compare on a 2D contour plot?
+   2. implot (pixel plot)
+
+
+#. Basemap example
+   2. Basemap to orthographic projection?
