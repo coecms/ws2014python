@@ -5,6 +5,29 @@ Python Winter School
 Requirements
 ============
 
+We need:
+ * NetCDF visualiser -- recommended: panoply: http://www.giss.nasa.gov/tools/panoply/
+ * Python -- recommended: 2.7.x
+   * IDE -- recommended: idle
+   * NumPy
+   * SciPy
+   * Matplotlib
+   * basemap
+
+Linux: All these packages should be available through your distro's repository system (apt, yum, etc.)
+MacOS: If you have Macports and/or homebrew, use those, otherwise use Enthought (see below)
+Windows: We think the easiest way is to use Enthought (see below), but feel free to look for yourself.
+
+Enthought: https://www.enthought.com/
+Has its advantages and disadvantages. It's easy to install, 
+but might interfere with other python installations.
+We need the full version of Enthought Canopy (basemap is not included in the free version)
+Fortunately they offer the free full version to anyone who registers with an university email
+address. (Note: The activation of the Enthought account took Holger a day.)
+
+
+ 
+
 * Pre-install python on personal laptops
 
   - Version:
