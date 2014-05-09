@@ -8,7 +8,7 @@ ver = {
     }
 
 
-padlength = 27
+padlength = 32
 
 def print_no_linefeed(s):
     """ (str) -> None
@@ -69,6 +69,20 @@ def check_scipy():
     print("success")
     return [0, 0]
         
+def check_netcdf4():
+    print_no_linefeed("Checking for netcdf4-python...".ljust(padlength))
+    try:
+        from netCDF4 import Dataset
+    except ImportError:
+        print("fail")
+        print("""
+        You can use Scipy to read/write NetCDF files, but netcdf4-python is
+        far superior both in reliability and ease-of-use
+        """)
+        return [0, 1]
+    print("success")
+    return [0, 0]
+        
 def check_matplotlib():
     print_no_linefeed("Checking for matplotlib...".ljust(padlength))
     try:
@@ -95,6 +109,7 @@ if __name__ == '__main__':
     result = element_sum( result, check_version())
     result = element_sum( result, check_numpy())
     result = element_sum( result, check_scipy())
+    result = element_sum( result, check_netcdf4())
     result = element_sum( result, check_matplotlib())
     result = element_sum( result, check_basemap())
 
