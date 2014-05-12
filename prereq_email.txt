@@ -1,0 +1,63 @@
+
+Before attending the course, please make sure you have the following:
+
+* A personal laptop
+
+  If you don't have a laptop, or don't want to use one, then feel free to share
+  with another person.
+
+
+* A NetCDF viewer. We recommend Panoply:
+
+  http://www.giss.nasa.gov/tools/panoply
+
+  NetCDF command line tools (e.g. ncdump) are recommended, but not necessary.
+
+
+* An installed version of Python:
+
+  We will be using Python 2.7 in the course. Attendees are welcome to use any
+  version of Python, but be aware that there are some differences between
+  Python 2 and Python 3.
+
+  If you do not have Python installed, check the following:
+
+  - Enthought provides a comprehensive collection of Python and scientific
+    packages as a single installation, and is available for free under Academic
+    License. It can be downloaded here:
+
+    https://www.enthought.com/products/canopy/academic/
+
+    Enthought also contains the packages used in this course.
+
+  - The Python website provides installation packages:
+
+    https://www.python.org/download/releases/2.7.6
+
+    Note that this does not include any individual packages, however.
+
+  - OS X users may want to install python using MacPorts or homebrew:
+
+    http://www.macports.org/
+    http://brew.sh/
+
+  - Linux users can obtain Python and support packages through most package
+    management utilities (yum, apt, pacman, etc.)
+
+  If you are new to Python, then we recommend using Enthought Canopy.
+
+
+* You will need the following packages and modules for the course:
+
+  - NumPy
+  - SciPy
+  - Matplotlib
+  - Basemap
+
+  These packages are included in the Enthought Canopy installer.
+
+  To see if you have these packages, use the script provided in this email.
+
+
+* Try to familiarise yourself with the basics of Python before attending the
+  course.
