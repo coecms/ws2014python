@@ -1,4 +1,3 @@
-
 Before attending the course, please make sure you have the following:
 
 * A personal laptop
@@ -11,10 +10,15 @@ Before attending the course, please make sure you have the following:
 
   http://www.giss.nasa.gov/tools/panoply
 
-  NetCDF command line tools (e.g. ncdump) are recommended, but not necessary.
+  NetCDF command line tools (e.g. ncdump) can also be used.
 
 
 * An installed version of Python:
+
+  First, run the ``check_prerequisites.py`` script to see if you have all the
+  necessary software. If there are any warnings, see the notes below.
+
+  ----
 
   We will be using Python 2.7 in the course. Attendees are welcome to use any
   version of Python, but be aware that there are some differences between
@@ -59,5 +63,6 @@ Before attending the course, please make sure you have the following:
   To see if you have these packages, use the script provided in this email.
 
 
-* Try to familiarise yourself with the basics of Python before attending the
-  course.
+* If you are new to Python, then try to familiarise yourself with the basics of
+  Python before attending the course. A brief tutorial is provided in the
+  email.
