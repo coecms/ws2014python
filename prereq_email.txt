@@ -55,6 +55,7 @@ Before attending the course, please make sure you have the following:
 
   - NumPy
   - SciPy
+  - NetCDF4-Python
   - Matplotlib
   - Basemap
 
