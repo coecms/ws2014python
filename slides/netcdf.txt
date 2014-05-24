@@ -1,14 +1,5 @@
-.. include:: <s5defs.txt>
-
-======================
 Introduction to netCDF
 ======================
-
-:Author: Marshall Ward
-:Date:   16-17 June 2014
-
-.. |bullet| unicode:: U+02022
-.. footer:: ANU |bullet| 16-17 June 2014
 
 
 What is netCDF

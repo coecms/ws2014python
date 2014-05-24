@@ -1,0 +1,22 @@
+.. include:: <s5defs.txt>
+
+========================================
+A Python Tutorial for Climate Scientists
+========================================
+
+:Author: Marshall Ward
+:Date:   16-17 June 2014
+
+.. |bullet| unicode:: U+02022
+.. footer:: ANU |bullet| 16-17 June 2014
+
+Introduction
+============
+
+Hello
+
+Outline here
+
+.. include:: netcdf.txt
+
+.. include:: n4py.txt

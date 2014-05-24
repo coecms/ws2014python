@@ -1,11 +1,13 @@
+TARGET=pytut.html
 SOURCES=$(wildcard *.txt)
 
-TARGETS=$(SOURCES:.txt=.html)
+all: $(TARGET)
 
-all: $(TARGETS)
+$(TARGET): $(SOURCES)
+	rst2s5 --link-stylesheet $(TARGET:.html=.txt) $@
 
-$(TARGETS): %.html: %.txt
-	rst2s5 --link-stylesheet $< $@
+#$(TARGETS): %.html: %.txt
+#	rst2s5 --link-stylesheet $< $@
 
 clean:
-	rm -rf $(TARGETS) ui
+	rm -rf $(TARGET) ui

@@ -1,14 +1,5 @@
-.. include:: <s5defs.txt>
-
-===============
 NetCDF4 Python
 ===============
-
-:Author: Marshall Ward
-:Date:   16-17 June 2014
-
-.. |bullet| unicode:: U+02022
-.. footer:: ANU |bullet| 16 June 2014
 
 
 The netCDF4 package
@@ -81,3 +72,18 @@ Two-stage approach in the C library:
 2. Write data to variables
 
 The rules in ``netCDF4`` are the same, but this step is obfuscated
+
+
+Creating a new dimension
+========================
+
+Create one-degree global latitude and longitude dimensions:
+
+.. code:: python
+
+   import netCDF4 as nc
+
+   latlon = nc.Dataset('latlon.nc', 'w')
+   latlon.createDimension('latitude', 181)
+   latlon.createDimension('longitude', 360)
+   latlon.close()
