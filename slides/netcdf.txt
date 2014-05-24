@@ -1,0 +1,68 @@
+.. include:: <s5defs.txt>
+
+======================
+Introduction to netCDF
+======================
+
+:Author: Marshall Ward
+:Date:   16-17 June 2014
+
+.. |bullet| unicode:: U+02022
+.. footer:: ANU |bullet| 16-17 June 2014
+
+
+What is netCDF
+==============
+
+A **Net**\ work **C**\ ommon **D**\ ata **F**\ orm
+
+Binary gridded data format:
+
+* Platform-independent
+
+* Self-describing
+
+* Readable across networks
+
+* Good API for C, C++, Fortran, Java
+
+* Outside support for other languages: Python, Ruby, Perl, etc
+
+* Finish this
+
+
+Basic Format
+============
+
+* Dimensions
+
+  - Fixed
+  - Unlimited
+
+* Variables
+
+  - Mapped to a tuple of dimensions
+
+* Attributes
+
+  - Global (file) or variable
+  - Strings, integers, floats, etc.
+  - Some have significant meaning
+
+
+netCDF3 vs netCDF4
+==================
+
+* Latest version: 4.3.2 (?)
+
+* netCDF3
+
+  - Unlimited dimensions
+  - Strong API Fortran
+  - Default 2GiB file size limit (32-bit file type)
+
+* netCDF4
+
+  - Based on HDF5 (generic data format)
+  - Full 64-bit support, no more file limit (for now)
+  - Evolving

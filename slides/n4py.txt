@@ -1,0 +1,83 @@
+.. include:: <s5defs.txt>
+
+===============
+NetCDF4 Python
+===============
+
+:Author: Marshall Ward
+:Date:   16-17 June 2014
+
+.. |bullet| unicode:: U+02022
+.. footer:: ANU |bullet| 16 June 2014
+
+
+The netCDF4 package
+===================
+
+Summarise the package here
+
+
+Test driving netCDF4
+====================
+
+* Import the ``netCDF4`` package:
+
+  .. code:: python
+
+     import netCDF4
+
+* Create your first netCDF ``Dataset`` object:
+
+  .. code:: python
+
+     ncfile = netCDF4.Dataset('newfile.nc', 'w',
+                              format='NETCDF4')
+
+* Close your file:
+
+  .. code:: python
+
+     ncfile.close()
+
+* Inspect your (empty) netCDF file
+
+
+File mode options
+=================
+
+Syntax is similar (but not identical) to ``libc`` usage
+
+- ``'r'``: Read-only (do not modify file)
+- ``'w'``: Create a new file (and delete existing)
+- ``'a'``: Append to existing file
+- ``'r+'``: Read and write existing file
+
+
+netCDF File Formats
+===================
+
+Some models require older netCDF formats:
+
+``'NETCDF4'``
+   Standard netCDF4 format (default)
+
+``'NETCDF4_CLASSIC'``
+   netCDF4 format, but only use netCDF3-compatible features
+
+``'NETCDF4_64BIT'``
+   Standard netCDF3, with 64-bit (>2GiB) support
+
+``'NETCDF3_CLASSIC'``
+   Standard 32-bit netCDF3, **2GiB size limit**
+
+
+Creating data
+=============
+
+Two-stage approach in the C library:
+
+1. Create dimensions and register variables
+
+2. Write data to variables
+
+The rules in ``netCDF4`` are the same, but this step is obfuscated
