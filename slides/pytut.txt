@@ -13,10 +13,41 @@ A Python Tutorial for Climate Scientists
 Introduction
 ============
 
-Hello
+Subjects we plan to cover
 
-Outline here
+* NumPy
+
+* NetCDF4-Python
+
+* Matplotlib
+
+* Basemap
+
+
+Outline
+=======
+
+* Brief overview of NumPy
+
+* Introduction to NetCDF
+
+* Creating NetCDF files in Python
+
+* Masked Arrays
+
+* Basic Matlotlib Plots
+
+* Advanced Matplotlib
+
+* Plotting on Basemap
+
 
 .. include:: netcdf.txt
 
 .. include:: n4py.txt
+
+
+Thank You
+=========
+
+The End

@@ -8,29 +8,20 @@ The netCDF4 package
 Summarise the package here
 
 
-Test driving netCDF4
+My First netCDF File
 ====================
 
-* Import the ``netCDF4`` package:
+Import the ``netCDF4`` package and create a new file:
 
   .. code:: python
 
      import netCDF4
 
-* Create your first netCDF ``Dataset`` object:
-
-  .. code:: python
-
-     ncfile = netCDF4.Dataset('newfile.nc', 'w',
+     latlon = netCDF4.Dataset('latlon.nc', 'w',
                               format='NETCDF4')
+     latlon.close()
 
-* Close your file:
-
-  .. code:: python
-
-     ncfile.close()
-
-* Inspect your (empty) netCDF file
+Inspect your (empty) file with ``ncdump`` (or Panoply).
 
 
 File mode options
@@ -49,41 +40,71 @@ netCDF File Formats
 
 Some models require older netCDF formats:
 
-``'NETCDF4'``
-   Standard netCDF4 format (default)
+* ``'NETCDF4'``: Standard netCDF4 format (default)
 
-``'NETCDF4_CLASSIC'``
-   netCDF4 format, but only use netCDF3-compatible features
+* ``'NETCDF4_CLASSIC'`` netCDF4 format, but netCDF3-compatible
 
-``'NETCDF4_64BIT'``
-   Standard netCDF3, with 64-bit (>2GiB) support
+* ``'NETCDF3_64BIT'``: Standard netCDF3, with >2GiB support
 
-``'NETCDF3_CLASSIC'``
-   Standard 32-bit netCDF3, **2GiB size limit**
+* ``'NETCDF3_CLASSIC'``: Standard netCDF3, 2GiB limit
 
 
 Creating data
 =============
 
-Two-stage approach in the C library:
+Two-stage approach:
 
 1. Create dimensions and register variables
 
 2. Write data to variables
 
-The rules in ``netCDF4`` are the same, but this step is obfuscated
 
+Creating new dimensions
+=======================
 
-Creating a new dimension
-========================
-
-Create one-degree global latitude and longitude dimensions:
+Create 5-degree resolution global latitude and longitude dimensions and an
+unlimited time axis:
 
 .. code:: python
 
-   import netCDF4 as nc
-
    latlon = nc.Dataset('latlon.nc', 'w')
-   latlon.createDimension('latitude', 181)
-   latlon.createDimension('longitude', 360)
-   latlon.close()
+
+   lat_d = latlon.createDimension('latitude', 37)
+   lon_d = latlon.createDimension('longitude', 73)
+   time_d = latlon.createDimension('time', None)
+
+
+Creating new variables
+======================
+
+Create variables which map to the dimensions:
+
+.. code:: python
+
+   lat_nc = latlon.createVariable('latitude', 'f8', ('latitude',))
+   lon_nc = latlon.createVariable('longitude', 'f8', ('longitude',))
+   time_nc = latlon.createVariable('time', 'f8', ('time',))
+
+
+Write Variables
+===============
+TODO
+
+
+Exercise
+========
+TODO
+
+
+Other Topics
+============
+
+* netCDF Groups
+
+* Multi-file reads (non-``NETCDF4`` format)
+
+* Chunking, Contiguous
+
+* Compression
+
+* Variable-length (vlen) arrays

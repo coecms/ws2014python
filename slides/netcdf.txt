@@ -5,9 +5,9 @@ Introduction to netCDF
 What is netCDF
 ==============
 
-A **Net**\ work **C**\ ommon **D**\ ata **F**\ orm
+A **net**\ work **C**\ ommon **D**\ ata **F**\ orm
 
-Binary gridded data format:
+Binary gridded data format with the following goals:
 
 * Platform-independent
 
