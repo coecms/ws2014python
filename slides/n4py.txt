@@ -1,14 +1,14 @@
 NetCDF4 Python
 ===============
 
+The ``netCDF4`` package is a Python interface to the NetCDF4 library, and
+provides a fast and fully-featured API for reading and creating NetCDF files
+with Python.
 
-The netCDF4 package
-===================
-
-Summarise the package here
+Jeffrey Whitaker (NOAA ESRL) is the creator and maintainer of ``netCDF4``.
 
 
-My First netCDF File
+My first netCDF file
 ====================
 
 Import the ``netCDF4`` package and create a new file:
@@ -41,11 +41,8 @@ netCDF File Formats
 Some models require older netCDF formats:
 
 * ``'NETCDF4'``: Standard netCDF4 format (default)
-
 * ``'NETCDF4_CLASSIC'`` netCDF4 format, but netCDF3-compatible
-
 * ``'NETCDF3_64BIT'``: Standard netCDF3, with >2GiB support
-
 * ``'NETCDF3_CLASSIC'``: Standard netCDF3, 2GiB limit
 
 
@@ -57,6 +54,9 @@ Two-stage approach:
 1. Create dimensions and register variables
 
 2. Write data to variables
+
+Once you begin writing data to your variables, the manifest is saved and
+you cannot add any more variables or dimensions.
 
 
 Creating new dimensions
@@ -81,17 +81,59 @@ Create variables which map to the dimensions:
 
 .. code:: python
 
-   lat_nc = latlon.createVariable('latitude', 'f8', ('latitude',))
-   lon_nc = latlon.createVariable('longitude', 'f8', ('longitude',))
-   time_nc = latlon.createVariable('time', 'f8', ('time',))
+   lat_nc = latlon.createVariable('latitude', 'f8',
+                                  ('latitude',))
+   lon_nc = latlon.createVariable('longitude', 'f8',
+                                  ('longitude',))
+   time_nc = latlon.createVariable('time', 'f8',
+                                   ('time',))
 
 
 Write Variables
 ===============
-TODO
+
+To write variables to file, include the index reference (``[:]``):
+
+.. code:: python
+
+   lat_nc[:] = np.linspace(-90., 90., 37)
+   lon_nc[:] = np.linspace(0., 360., 73)
+   time_nc[:] = np.array([0.])
+
+
+Attributes
+==========
+
+Add attributes using the dereference (``.``) operator:
+
+.. code:: python
+
+   latlon.description = 'A sample lat/lon grid'
+
+   lat_nc.units = 'degrees north'
+   lon_nc.units = 'degrees east'
+
+   time_nc.units = 'days since 1900-01-01 00:00:00.0'
+   time_nc.calendar = 'gregorian'
 
 
 Exercise
+========
+
+By converting degrees to distances along the sphere,
+
+.. math::
+
+   \Delta x &= r_E \cos \phi \times \Delta \lambda \\
+   \Delta y &= r_E \times \Delta \phi
+
+calculate ``dx`` and ``dy`` for the grid cells of our 5-degree grid and save
+the output in a netCDF file.
+
+*Assume that grid points are the corner cells.*
+
+
+Solution
 ========
 TODO
 
@@ -103,7 +145,7 @@ Other Topics
 
 * Multi-file reads (non-``NETCDF4`` format)
 
-* Chunking, Contiguous
+* Data chunking
 
 * Compression
 
