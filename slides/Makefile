@@ -1,13 +1,11 @@
-TARGET=pytut.html
-SOURCES=$(wildcard *.txt)
+TARGET=slides.html
+SOURCE=pytut.txt
+SRCS=numpy.txt netcdf.txt n4py.txt
 
 all: $(TARGET)
 
-$(TARGET): $(SOURCES)
-	rst2s5 --link-stylesheet $(TARGET:.html=.txt) $@
-
-#$(TARGETS): %.html: %.txt
-#	rst2s5 --link-stylesheet $< $@
+$(TARGET): $(SOURCE) $(SRCS)
+	rst2s5 --link-stylesheet $< $@
 
 clean:
 	rm -rf $(TARGET) ui
