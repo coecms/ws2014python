@@ -1,19 +1,34 @@
 Introduction to NumPy
 =====================
 
-Explain NumPy here
+NumPy is a Python module for analysis of numerical data.
+
+It is not part of the Standard Library, but has become the standard tool of the
+scientific community.
+
+To get started, import the module:
+
+.. code:: python
+
+   import numpy as np
 
 
 Lists vs. Arrays
 ================
 
-Python **lists** are flexible data structures that can also require significant
-overhead to manipulate. They can't be naturally vectorized in the CPU, so it
-generally takes a long time to do any computational work.
+The Python ``list``:
 
-The ``ndarray`` is the fundamental NumPy data type. The data is contiguous in
-memory, manipulated with C libraries, and only contain a thin Python object
-around the entire data set.
+* Flexible data structure, but...
+
+* Significant overhead to manipulate elements
+
+The ``ndarray`` is the fundamental Numpy data type:
+
+* Data stored in contiguous blocks of memory
+
+* Efficient (vectorized) calculations of elements
+
+* Thin Python wrapper around the entire array
 
 
 Creating Arrays
