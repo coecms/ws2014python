@@ -1,0 +1,102 @@
+Introduction to NumPy
+=====================
+
+Explain NumPy here
+
+
+Lists vs. Arrays
+================
+
+Python **lists** are flexible data structures that can also require significant
+overhead to manipulate. They can't be naturally vectorized in the CPU, so it
+generally takes a long time to do any computational work.
+
+The ``ndarray`` is the fundamental NumPy data type. The data is contiguous in
+memory, manipulated with C libraries, and only contain a thin Python object
+around the entire data set.
+
+
+Creating Arrays
+===============
+
+Convert from a list:
+
+.. code:: python
+
+   x_list = [1., 3., 5., 7., 9.]
+   x = np.array(x_list)
+
+or use a sequence generator:
+
+.. code:: python
+
+   x_rng = np.arange(1., 10., 2.)
+   x_lin = np.linspace(1., 9., 5)
+
+
+Initializing Arrays
+===================
+
+You can also create new arrays:
+
+.. code:: python
+
+   x_empty = np.empty(1000)
+
+or initialise them to default values:
+
+.. code:: python
+
+   x_zeros = np.zeros(1000)
+   x_ones = np.ones(1000)
+
+Also take a look at ``zeros_like``, ``ones_like``, ``empty_like``
+
+
+Basic Indexing
+==============
+
+Same as lists (zero-index, slice, etc)
+
+Discuss the vectorized assignment (x[:] = 0.)
+
+
+Loops vs Vectorization
+======================
+
+Are these identical?
+
+.. code:: python
+
+   x = np.empty(1000)
+   y = np.empty(1000)
+
+   for i in range(1000):
+      x[i] = i
+
+   y[:] = np.arange(1000)
+
+One is much faster than the other!
+
+
+Context Switching
+=================
+
+Explain Python vs C library operations in terms of context switching
+
+
+Multidimensional arrays and shapes
+==================================
+
+*Keep this basic, we need to wrap up and move on to NetCDF*
+
+
+Exercise
+========
+Construct some simple vectorised array operations
+(Maybe challenge them a bit)
+
+
+Solution
+========
+TODO

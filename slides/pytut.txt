@@ -10,6 +10,7 @@ A Python Tutorial for Climate Scientists
 .. |bullet| unicode:: U+02022
 .. footer:: ANU |bullet| 16-17 June 2014
 
+
 Introduction
 ============
 
@@ -41,6 +42,8 @@ Outline
 
 * Plotting on Basemap
 
+
+.. include:: numpy.txt
 
 .. include:: netcdf.txt
 
