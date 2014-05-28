@@ -97,7 +97,17 @@ One is much faster than the other!
 Context Switching
 =================
 
-Explain Python vs C library operations in terms of context switching
+How NumPy works:
+
+1. Prepare a numerical calculation in Python
+
+2. Send the job to C libraries
+
+3. Return the result to Python
+
+NumPy (aka C) is fast, but context switching is slow
+
+**Don't use loops**
 
 
 Multidimensional arrays and shapes
@@ -108,10 +118,38 @@ Multidimensional arrays and shapes
 
 Exercise
 ========
-Construct some simple vectorised array operations
-(Maybe challenge them a bit)
+
+1. Create global :math:`5^\circ` resolution lat/lon axes
+
+2. Use ``meshgrid`` to create 2-dimensional lat/lon grids
+
+3. Convert degrees to distances along the sphere:
+
+.. math::
+
+   \Delta x &= r_E \cos \phi \times \Delta \lambda \\
+   \Delta y &= r_E \times \Delta \phi
+
+and calculate ``dx`` and ``dy`` for the grid cells
+
+*Assume that grid points are the corner cells.*
 
 
 Solution
 ========
-TODO
+
+.. code:: python
+
+   lon_axis = np.linspace(-180., 180, 73)
+   lat_axis = np.linspace(-90., 90., 37)
+   lon, lat = np.meshgrid(lon_axis, lat_axis)
+
+   r_E = 6.37e6
+   d_lon = lat[:, 1:] - lat[:, :-1]
+   d_lat = lon[1:, :] - lon[:-1, :]
+
+   lat_midpt = 0.5 * (lat[1:, :] + lat[:-1, :])
+   dx = r_E * np.cos(lat * np.pi / 180.) * d_lon
+   dy = r_E * d_lat
+
+.. Need to fix the dx shape

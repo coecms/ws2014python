@@ -119,18 +119,7 @@ Add attributes using the dereference (``.``) operator:
 
 Exercise
 ========
-
-By converting degrees to distances along the sphere,
-
-.. math::
-
-   \Delta x &= r_E \cos \phi \times \Delta \lambda \\
-   \Delta y &= r_E \times \Delta \phi
-
-calculate ``dx`` and ``dy`` for the grid cells of our 5-degree grid and save
-the output in a netCDF file.
-
-*Assume that grid points are the corner cells.*
+TODO
 
 
 Solution
