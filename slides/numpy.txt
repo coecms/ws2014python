@@ -151,5 +151,3 @@ Solution
    lat_midpt = 0.5 * (lat[1:, :] + lat[:-1, :])
    dx = r_E * np.cos(lat * np.pi / 180.) * d_lon
    dy = r_E * d_lat
-
-.. Need to fix the dx shape
