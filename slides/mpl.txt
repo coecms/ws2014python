@@ -31,8 +31,8 @@ In the python shell, use interactive mode:
 
 .. code:: python
 
-   >> plt.ion()      # Enable interactive mode
-   >> plt.ioff()     # Disable interactive mode
+   plt.ion()      # Enable interactive mode
+   plt.ioff()     # Disable interactive mode
 
 
 Saving model output
@@ -51,6 +51,3 @@ To remove space around the plot:
 .. code:: python
 
    plt.savefile('myplot.pdf', bbox_inches='tight')
-
-
-

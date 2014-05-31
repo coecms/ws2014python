@@ -13,13 +13,13 @@ My first netCDF file
 
 Import the ``netCDF4`` package and create a new file:
 
-  .. code:: python
+.. code:: python
 
-     import netCDF4
+  import netCDF4
 
-     latlon = netCDF4.Dataset('latlon.nc', 'w',
-                              format='NETCDF4')
-     latlon.close()
+  latlon = netCDF4.Dataset('latlon.nc', 'w',
+                           format='NETCDF4')
+  latlon.close()
 
 Inspect your (empty) file with ``ncdump`` (or Panoply).
 
