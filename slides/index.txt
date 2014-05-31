@@ -49,6 +49,10 @@ Outline
 
 .. include:: n4py.txt
 
+.. include:: mpl.txt
+
+.. include:: basemap.txt
+
 
 Thank You
 =========

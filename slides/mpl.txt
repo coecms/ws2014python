@@ -17,9 +17,40 @@ To get started:
 First plot
 ==========
 
+Plot :math:`\sin x` from :math:`0` to :math:`3\pi`:
+
 .. code:: python
 
-   x = np.linspace(0., 4. * np.pi, 100)
+   x = np.linspace(0., 3. * np.pi, 25)
    y = np.sin(x)
 
    plt.plot(x, y)
+   plt.show()
+
+In the python shell, use interactive mode:
+
+.. code:: python
+
+   >> plt.ion()      # Enable interactive mode
+   >> plt.ioff()     # Disable interactive mode
+
+
+Saving model output
+===================
+
+Save the plot object:
+
+.. code:: python
+
+   plt.savefig('myplot.pdf')
+
+The file type is based on the extension (usually).
+
+To remove space around the plot:
+
+.. code:: python
+
+   plt.savefile('myplot.pdf', bbox_inches='tight')
+
+
+
