@@ -50,4 +50,5 @@ To remove space around the plot:
 
 .. code:: python
 
-   plt.savefile('myplot.pdf', bbox_inches='tight')
+   plt.savefile('myplot.pdf',
+                bbox_inches='tight')
