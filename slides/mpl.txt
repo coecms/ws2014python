@@ -52,3 +52,50 @@ To remove space around the plot:
 
    plt.savefile('myplot.pdf',
                 bbox_inches='tight')
+
+
+Mulitple plots
+==============
+
+.. code:: python
+
+   x = np.linspace(0., 3.* np.pi, 100)
+   phase = np.arange(0., 2. * np.pi, 2. * np.pi / 3.)
+
+   for p in phase:
+      plt.plot(x, np.sin(x + p))
+
+
+Exercise
+========
+
+Load the sea surface temperature and plot the time series for the mean global
+sea surface ?
+
+
+Multiple figures
+================
+
+plt.subplot() stuff
+
+
+Plot objects
+============
+
+manipulating lines and figures more directly
+
+
+mplot3d
+=======
+
+Example 3D plots
+
+
+Exercise
+========
+TODO
+
+
+Solution
+========
+TODO

@@ -4,8 +4,7 @@ Basemap matplotlib toolkit
 Basemap is an extension to matplotlib for plotting geographic data on standard
 map projections.
 
-Jeffrey Whitaker (NOAA ESRL), creator of ``netCDF4python``, is also the
-creator/maintainer of ``basemap``.
+Jeffrey Whitaker (NOAA ESRL) is also the creator/maintainer of ``basemap``.
 
 Load it from the ``matplotlib`` toolkit:
 
@@ -37,9 +36,21 @@ Draw the basic map features:
    m.drawcoastlines()
 
 
-More projections
-================
-TODO
+Fixed-domain projections
+========================
+
+``llcrnrlat``, ``llcrnrlon``
+   Lower-left corner latitude/longitude
+``urcrnrlat``, ``urcrnrlon``
+   Upper-right corner latitude/longitude
+
+Example Mercator projection:
+
+.. code:: python
+
+   m = Basemap(projection='merc',
+               llcrnrlat=-80., urcrnrlat=80.,
+               llcrnrlon=-180., urcrnrlon=180.)
 
 
 Prettify your plot
@@ -93,8 +104,6 @@ Use the basemap object to convert grids to map projections:
 
    lon_b, lat_b = bmap(lon, lat)
    bmap.contourf(lon_b, lat_b, sst)
-
-*Should this be the exercise?*
 
 
 Exercise
