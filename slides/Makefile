@@ -1,6 +1,6 @@
 TARGET=slides.html
 SOURCE=index.txt
-SRCS=numpy.txt netcdf.txt n4py.txt mpl.txt basemap.txt
+SRCS=numpy.txt netcdf.txt n4py.txt more_numpy.txt mpl.txt basemap.txt
 MATH=mathjax # mathml for python2, mathjax for python3
 
 all: $(TARGET)

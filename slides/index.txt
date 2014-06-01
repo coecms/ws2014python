@@ -28,26 +28,27 @@ Subjects we plan to cover
 Outline
 =======
 
-* Brief overview of NumPy
+* Introduction to NumPy
 
 * Introduction to NetCDF
 
-* Creating NetCDF files in Python
+* NetCDF in Python
 
-* Masked Arrays
+* Advanced NumPy
 
-* Basic Matlotlib Plots
+* Basic Matlotlib
 
 * Advanced Matplotlib
 
-* Plotting on Basemap
-
+* Basemap
 
 .. include:: numpy.txt
 
 .. include:: netcdf.txt
 
 .. include:: n4py.txt
+
+.. include:: more_numpy.txt
 
 .. include:: mpl.txt
 
