@@ -75,15 +75,20 @@ What if you want to broadcast an inner dimension? Use ``newaxis``:
 Implicit indexing
 =================
 
-You can omit all inner indices with ``...``:
+You can omit all inner indices with the ``...`` operator:
 
-.. code::
+.. code:: python
 
    x = np.arange(24).reshape(2, 3, 4)
 
-   # These are equivalent
+The following two assignments are equivalent:
+
+.. code:: python
+
    x[:, :, 0] = 0.
    x[..., 0] = 0.
+
+Useful when looping over arrays of different shapes
 
 
 Masked Arrays
