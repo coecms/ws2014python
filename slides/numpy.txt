@@ -74,15 +74,14 @@ Indexing is just like with lists:
 .. code:: python
 
    >> x = np.array([1, 2, 3, 4, 5])
-
    >> x[0]
    1
 
    >> x[2:4]
    array([3, 4])
 
-   >> x[1:-1]
-   array([2, 3, 4])
+   >> x[::-1]
+   array([5, 4, 3, 2, 1])
 
 
 Loops vs Vectorization
@@ -116,7 +115,7 @@ How NumPy works:
 
 NumPy (i.e. C) is fast, but context switching is slow
 
-**Don't use loops**
+**Loops over indices are slow**
 
 
 Multidimensional arrays and shapes

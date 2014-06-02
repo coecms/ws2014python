@@ -1,8 +1,9 @@
-More NumPy
-==========
+Performance NumPy
+=================
 
-Back to NumPy.
-This is where we put some "advanced" topics
+Talk about NumPy's implementation in memory here
+
+*But not too much*
 
 
 "Fast" indexing
@@ -22,19 +23,43 @@ How do we index :math:`u = u(x, y, z, t)`?
 
    real, dimension(n_lon, n_lat, n_z, n_t) :: u
 
-NumPy orders like C, not Fortran. So :math:`x` is last!
+NumPy defaults to C, but you can change it.
 
 
 Copying Arrays
 ==============
 
-Three levels
+.. code:: python
 
-1. References (y = x)
+   x = np.arange(10)
+   y = x
+   z = x[:]
 
-2. Views (y = x, but different shape)
+What happens to ``y`` and ``z`` under these two operations?
 
-3. Deep copy (y = x[:])
+.. code:: python
+
+   x.shape(2,5)
+   x[0] = 999.
+
+What does ``x.flags`` say?
+
+
+How to copy, *really* copy
+==========================
+
+Invoke the ``copy`` command:
+
+.. code:: python
+
+   yy = x.copy()
+
+Or pre-allocate and copy the values:
+
+.. code:: python
+
+   zz = np.empty_like(x)
+   zz[:] = x
 
 
 Broadcasting
@@ -71,6 +96,9 @@ What if you want to broadcast an inner dimension? Use ``newaxis``:
 
    x * y[:, np.newaxis]
 
+This is an *implicit broadcast*. Dimensions of 1 are broadcast to match the
+other array.
+
 
 Implicit indexing
 =================
@@ -88,7 +116,7 @@ The following two assignments are equivalent:
    x[:, :, 0] = 0.
    x[..., 0] = 0.
 
-Useful when looping over arrays of different shapes
+Useful when looping over arrays of different shapes.
 
 
 Masked Arrays
@@ -102,12 +130,8 @@ Exposition here
    x_m = np.ma.masked_array(x, x > 0.5)
 
 
-Exercise
-========
+``np.take``
+===========
 
-Read in some global pressure data, then calculate the geostrophic velocity.
-
-
-Solution
-========
-TODO
+Supposedly faster, but I never use it.
+Example?
