@@ -23,7 +23,24 @@ How do we index :math:`u = u(x, y, z, t)`?
 
    real, dimension(n_lon, n_lat, n_z, n_t) :: u
 
-NumPy defaults to C, but you can change it.
+NumPy defaults to C order, but you can change it.
+
+
+Memory Usage
+============
+
+How much memory does this use?
+
+.. code:: python
+
+   x = ...
+   for i in range(N):
+      y = f(x)
+      x[i] = y
+
+``y`` is bound to the previous evaulation of ``f``, so it cannot be cleared.
+
+Garbage collection is not psychic. Use ``del y`` to help it along.
 
 
 Copying Arrays
@@ -81,7 +98,11 @@ But this works fine:
    y = np.arange(4)
    x * y
 
-Outer axes are *broadcast* to inner axes:
+
+Broadcasting Rules
+==================
+
+Outer axes are *broadcast* to inner axes
 
 
 Extending dimensions

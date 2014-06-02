@@ -20,14 +20,14 @@ Use :math:`h = 0.1`
 Solution
 ========
 
+We get :math:`h` from the grid, but constant value is OK
+
 .. code:: python
 
    x = np.arange(0., 10., 0.1)
    h = x[1:] - x[:-1]
 
    d_sin = (np.sin(x[1:]) - np.sin(x[:-1])) / h
-
-   plt.plot(x, np.sin(x), x, np.cos(x))
 
 
 Laplacian Solver
