@@ -62,7 +62,7 @@ Outer axes are *broadcast* to inner axes:
 Extending dimensions
 ====================
 
-What if you want to broadcast an inner dimension? Use ``newaxis``!
+What if you want to broadcast an inner dimension? Use ``newaxis``:
 
 .. code:: python
 
@@ -70,6 +70,20 @@ What if you want to broadcast an inner dimension? Use ``newaxis``!
    y = np.arange(3)
 
    x * y[:, np.newaxis]
+
+
+Implicit indexing
+=================
+
+You can omit all inner indices with ``...``:
+
+.. code::
+
+   x = np.arange(24).reshape(2, 3, 4)
+
+   # These are equivalent
+   x[:, :, 0] = 0.
+   x[..., 0] = 0.
 
 
 Masked Arrays
