@@ -48,12 +48,13 @@ netCDF3 vs netCDF4
 
 * netCDF3
 
-  - Unlimited dimensions
+  - Up to one unlimited dimension
   - Strong API Fortran
   - Default 2GiB file size limit (32-bit file type)
 
 * netCDF4
 
   - Based on HDF5 (generic data format)
+  - More than one unlimited dimension possible
   - Full 64-bit support, no more file limit (for now)
   - Evolving
