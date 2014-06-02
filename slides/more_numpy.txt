@@ -5,6 +5,8 @@ Talk about NumPy's implementation in memory here
 
 *But not too much*
 
+Maybe show ``x.data.tobytes()`` for ``dtype=uint8``
+
 
 "Fast" indexing
 ===============
@@ -140,6 +142,24 @@ The following two assignments are equivalent:
 Useful when looping over arrays of different shapes.
 
 
+Boolean arrays
+==============
+
+Set the negative values to zero:
+
+.. code:: python
+
+   x = np.random.randn(10, 10)
+   neg_mask = x < 0.
+   x[neg_mask] = 0.
+
+Or just save a line
+
+.. code:: python
+
+   x[x < 0] = 0.
+
+
 Masked Arrays
 =============
 
@@ -151,8 +171,4 @@ Exposition here
    x_m = np.ma.masked_array(x, x > 0.5)
 
 
-``np.take``
-===========
 
-Supposedly faster, but I never use it.
-Example?
