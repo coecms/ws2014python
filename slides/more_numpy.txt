@@ -1,0 +1,94 @@
+More NumPy
+==========
+
+Back to NumPy.
+This is where we put some "advanced" topics
+
+
+"Fast" indexing
+===============
+
+How do we index :math:`u = u(x, y, z, t)`?
+
+"C" ordering:
+
+.. code:: c
+
+   double u[n_t][n_z][n_lat][n_lon];
+
+"Fortran" ordering:
+
+.. code:: fortran
+
+   real, dimension(n_lon, n_lat, n_z, n_t) :: u
+
+NumPy orders like C, not Fortran. So :math:`x` is last!
+
+
+Copying Arrays
+==============
+
+Three levels
+
+1. References (y = x)
+
+2. Views (y = x, but different shape)
+
+3. Deep copy (y = x[:])
+
+
+Broadcasting
+============
+
+This won't work; outer dimensions don't match
+
+.. code:: python
+
+   x = np.arange(12).reshape(3, 4)
+   y = np.arange(12).reshape(4, 3)
+   x * y
+
+But this works fine:
+
+.. code:: python
+
+   x = np.arange(12).reshape(3, 4)
+   y = np.arange(4)
+   x * y
+
+Outer axes are *broadcast* to inner axes:
+
+
+Extending dimensions
+====================
+
+What if you want to broadcast an inner dimension? Use ``newaxis``!
+
+.. code:: python
+
+   x = np.arange(12).reshape(3, 4)
+   y = np.arange(3)
+
+   x * y[:, np.newaxis]
+
+
+Masked Arrays
+=============
+
+Exposition here
+
+.. code:: python
+
+   x = np.random.rand(3, 4)
+   x_m = np.ma.masked_array(x, x > 0.5)
+
+
+Exercise
+========
+
+Read in some global pressure data, then calculate the geostrophic velocity.
+
+
+Solution
+========
+TODO
