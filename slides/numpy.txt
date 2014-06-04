@@ -91,13 +91,12 @@ Are these identical?
 
 .. code:: python
 
-   x = np.empty(1000)
-   y = np.empty(1000)
+   x = np.empty(1e8)
 
-   for i in range(1000):
+   for i in range(int(1e8)):
       x[i] = i
 
-   y[:] = np.arange(1000)
+   x[:] = np.arange(1e8)
 
 One is much faster than the other!
 

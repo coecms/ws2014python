@@ -35,17 +35,6 @@ Syntax is similar (but not identical) to ``libc`` usage
 - ``'r+'``: Read and write existing file
 
 
-netCDF File Formats
-===================
-
-Some models require older netCDF formats:
-
-* ``'NETCDF4'``: Standard netCDF4 format (default)
-* ``'NETCDF4_CLASSIC'`` netCDF4 format, but netCDF3-compatible
-* ``'NETCDF3_64BIT'``: Standard netCDF3, with >2GiB support
-* ``'NETCDF3_CLASSIC'``: Standard netCDF3, 2GiB limit
-
-
 Creating data
 =============
 
