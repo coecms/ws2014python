@@ -54,17 +54,12 @@ Exercise
 
 Create :math:`5^\circ`-resolution axes latitude and longitude on a global grid.
 
-* Include both latitude endpoints
-
 * Start your longitude grid on :math:`180^\circ`\ W
-
 * Do not include :math:`180^\circ`\ E
 
 
 Solution
 ========
-
-Solution using ``linspace``:
 
 .. code:: python
 
@@ -76,13 +71,12 @@ Solution using ``linspace``:
    N_lon = round((lon_e - lon_w) / d_lon)
 
    lat_axis = np.linspace(lat_s, lat_n, N_lat)
-   lon_axis = np.linspace(lon_w, lon_e - d_lon, N_lon)
+   lon_axis = np.linspace(lon_w, lon_e - d_lon,
+                          N_lon)
 
 
 Solution
 ========
-
-Solution using ``arange``:
 
 .. code:: python
 
@@ -90,8 +84,8 @@ Solution using ``arange``:
    lat_s, lat_n = -90., 90.
    lon_w, lon_e = -180., 180.
 
-   lat_axis = np.arange(-90., 90. + 0.5, 0.5)
-   lon_axis = np.arange(-180., 180., 0.5)
+   lat_axis = np.arange(lat_s, lat_n + d_lat, d_lat)
+   lon_axis = np.arange(lon_w, lon_e, d_lon)
 
 
 Initializing Arrays
