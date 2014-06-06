@@ -92,7 +92,7 @@ Pre-rendered backgrounds are also available:
 Plotting geographic data
 ========================
 
-Use the basemap object to convert grids to map projections:
+Use the basemap object to convert **grids** to **map projections**:
 
 .. code:: python
 

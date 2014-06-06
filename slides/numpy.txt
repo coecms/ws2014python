@@ -69,9 +69,19 @@ or initialise them to default values:
 Basic Indexing
 ==============
 
-Same as lists (zero-index, slice, etc)
+Indexing is just like with lists:
 
-Discuss the vectorized assignment (x[:] = 0.)
+.. code:: python
+
+   >> x = np.array([1, 2, 3, 4, 5])
+   >> x[0]
+   1
+
+   >> x[2:4]
+   array([3, 4])
+
+   >> x[::-1]
+   array([5, 4, 3, 2, 1])
 
 
 Loops vs Vectorization
@@ -81,13 +91,12 @@ Are these identical?
 
 .. code:: python
 
-   x = np.empty(1000)
-   y = np.empty(1000)
+   x = np.empty(1e8)
 
-   for i in range(1000):
+   for i in range(int(1e8)):
       x[i] = i
 
-   y[:] = np.arange(1000)
+   x[:] = np.arange(1e8)
 
 One is much faster than the other!
 
@@ -105,7 +114,7 @@ How NumPy works:
 
 NumPy (i.e. C) is fast, but context switching is slow
 
-**Don't use loops**
+**Loops over indices are slow**
 
 
 Multidimensional arrays and shapes

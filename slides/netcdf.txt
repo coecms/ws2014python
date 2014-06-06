@@ -17,44 +17,46 @@ Binary gridded data format with the following goals:
 
 * Good API for C, C++, Fortran, Java
 
-* Outside support for other languages: Python, Ruby, Perl, etc
 
-* Finish this
+Basic Structure
+===============
 
+Three basic components:
 
-Basic Format
-============
+Dimensions
+   Sizes of each dimension axis (even "unlimited")
 
-* Dimensions
+Variables
+   Numerical data and its shape (based on Dimensions)
 
-  - Fixed
-  - Unlimited
-
-* Variables
-
-  - Mapped to a tuple of dimensions
-
-* Attributes
-
-  - Global (file) or variable
-  - Strings, integers, floats, etc.
-  - Some have significant meaning
+Attributes
+   Metadata describing contents
 
 
-netCDF3 vs netCDF4
-==================
+netCDF formats
+==============
 
-* Latest version: 4.3.2 (?)
+``NETCDF4``
+   Standard, fully featured format
 
-* netCDF3
-
+<<<<<<< HEAD
   - Up to one unlimited dimension
   - Strong API Fortran
   - Default 2GiB file size limit (32-bit file type)
+=======
+``NETCDF4_CLASSIC``
+   like netCDF4, but only netCDF3-compatible features are included
+>>>>>>> e56fc71885318485b94351c1276319f77d51d7df
 
-* netCDF4
+``NETCDF3_64BIT``
+   Older netCDF3 format, but with >2GiB support
 
+<<<<<<< HEAD
   - Based on HDF5 (generic data format)
   - More than one unlimited dimension possible
   - Full 64-bit support, no more file limit (for now)
   - Evolving
+=======
+``NETCDF3_CLASSIC``
+   Standard 32-bit netCDF3 format. 2GiB file size limit.
+>>>>>>> e56fc71885318485b94351c1276319f77d51d7df

@@ -1,0 +1,64 @@
+Stupid arithmetic tricks
+========================
+
+accumulate
+----------
+
+x = np.arange(10)
+np.add.accumulate(x)
+
+
+outer
+-----
+Generate a multiplication table
+
+x = np.arange(1, 12)
+np.multiply.outer(x,x)
+
+same as this
+
+x * x[:, np.newaxis]
+
+
+polynomials
+-----------
+I guess people use these a lot
+
+
+Index Stuff
+===========
+
+
+take
+----
+I have no idea why people use this
+
+
+where
+-----
+Useful for indexing apparently
+
+
+mgrid and ogrid
+---------------
+I forgot
+Nowadays I just use meshgrid
+
+
+hstack and vstack
+-----------------
+I feel like these must be useful but I never use them
+
+
+Hard stuff
+==========
+
+
+cache line
+----------
+Hard to get right in an example though
+
+
+custum ufuncs
+-------------
+This is a cool topic that I know nothing about

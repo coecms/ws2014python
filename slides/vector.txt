@@ -1,0 +1,104 @@
+Vectorization examples
+======================
+
+"Vectorization" refers to efficient calculation of arrays in the CPU.
+
+TODO: Explain a bit better
+
+
+Derivatives
+===========
+
+Calculate :math:`d/dx \sin x` using a forward difference:
+
+.. math:: \frac{d}{dx} \left(\sin x \right)
+            \approx \frac{\sin (x + h) - \sin x}{h}
+
+Use :math:`h = 0.1`
+
+
+Solution
+========
+
+We get :math:`h` from the grid, but constant value is OK
+
+.. code:: python
+
+   x = np.arange(0., 10., 0.1)
+   h = x[1:] - x[:-1]
+
+   d_sin = (np.sin(x[1:]) - np.sin(x[:-1])) / h
+
+
+Laplacian Solver
+================
+
+Solve :math:`\nabla^2 \phi = 0` on a 2D square, with
+
+.. math::
+
+   \phi(x, 0) &= 0   &  \phi(x, 1) &= 0 \\
+   \phi(0, y) &= 0   &  \phi(1, y) &= \sin \pi x
+
+Use iteration:
+
+.. math::
+
+   \phi_{i+1, j} + \phi_{i-1, j} + \phi_{i, j+1} + \phi_{i, j-1}
+      - 4 \phi_{ij} = 0
+
+   \phi^{(n+1)}_{ij} = \frac{1}{4} \left(
+                                 \phi^{(n)}_{i+1, j} + \phi^{(n)}_{i-1, j}
+                                 + \phi^{(n)}_{i, j+1} + \phi^{(n)}_{i, j-1}
+                        \right)
+
+
+Solution
+========
+
+Slow convergence, but it works:
+
+.. code:: python
+
+   a = np.linspace(0., 1., 101)
+   x, y = np.meshgrid(a, a)
+
+   p = np.zeros_like(x)
+   p[-1, :] = np.sin(np.pi * a)
+
+   for i in xrange(10000):
+       p[1:-1, 1:-1] = 0.25 * (  p[:-2, 1:-1]
+                               + p[2:, 1:-1]
+                               + p[1:-1, :-2]
+                               + p[1:-1, 2:] )
+
+
+Index summations
+================
+
+Given two random 2D arrays:
+
+.. code:: python
+
+   x = np.random.rand(2, 5)
+   y = np.random.rand(3, 5)
+
+vectorise this sum along the tail axis:
+
+.. math:: S_{ij} = \sum_{k} x_{ik} y_{jk}
+
+
+Solution
+========
+
+Two solutions here, one relies on implicit "1->N" broadcasting:
+
+.. code:: python
+
+   S = (x[:, np.newaxis, :] * y[np.newaxis, :, :]).sum(axis=-1)
+
+Another other uses the ``einsum`` function:
+
+.. code:: python
+
+   S = np.einsum('ik,jk->ij', x, y)
