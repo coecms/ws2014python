@@ -39,14 +39,8 @@ netCDF formats
 ``NETCDF4``
    Standard, fully featured format
 
-<<<<<<< HEAD
-  - Up to one unlimited dimension
-  - Strong API Fortran
-  - Default 2GiB file size limit (32-bit file type)
-=======
 ``NETCDF4_CLASSIC``
    like netCDF4, but only netCDF3-compatible features are included
->>>>>>> e56fc71885318485b94351c1276319f77d51d7df
 
 ``NETCDF3_64BIT``
    Older netCDF3 format, but with >2GiB support
