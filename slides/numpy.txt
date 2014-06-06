@@ -49,6 +49,51 @@ or use a sequence generator:
    x_lin = np.linspace(1., 9., 5)
 
 
+Exercise
+========
+
+Create :math:`5^\circ`-resolution axes latitude and longitude on a global grid.
+
+* Include both latitude endpoints
+
+* Start your longitude grid on :math:`180^\circ`\ W
+
+* Do not include :math:`180^\circ`\ E
+
+
+Solution
+========
+
+Solution using ``linspace``:
+
+.. code:: python
+
+   d_lon = d_lat = 5.
+   lat_s, lat_n = -90., 90.
+   lon_w, lon_e = -180., 180.
+
+   N_lat = 1 + round((lat_n - lat_s) / d_lat)
+   N_lon = round((lon_e - lon_w) / d_lon)
+
+   lat_axis = np.linspace(lat_s, lat_n, N_lat)
+   lon_axis = np.linspace(lon_w, lon_e - d_lon, N_lon)
+
+
+Solution
+========
+
+Solution using ``arange``:
+
+.. code:: python
+
+   d_lon = d_lat = 5.
+   lat_s, lat_n = -90., 90.
+   lon_w, lon_e = -180., 180.
+
+   lat_axis = np.arange(-90., 90. + 0.5, 0.5)
+   lon_axis = np.arange(-180., 180., 0.5)
+
+
 Initializing Arrays
 ===================
 
@@ -114,7 +159,7 @@ How NumPy works:
 
 NumPy (i.e. C) is fast, but context switching is slow
 
-**Loops over indices are slow**
+**Always try to vectorize your equations**
 
 
 Multidimensional arrays and shapes
@@ -126,20 +171,18 @@ Multidimensional arrays and shapes
 Exercise
 ========
 
-1. Create global :math:`5^\circ` resolution lat/lon axes
-
-2. Use ``meshgrid`` to create 2-dimensional lat/lon grids
-
-3. Convert degrees to distances along the sphere:
+For latitude :math:`\phi`, longitude :math:`\lambda`, and Earth radius
+:math:`r_E`, and using the spherical distance formulas:
 
 .. math::
 
    \Delta x &= r_E \cos \phi \times \Delta \lambda \\
    \Delta y &= r_E \times \Delta \phi
 
-and calculate ``dx`` and ``dy`` for the grid cells
+calculate the distance between adjancent grid cells (i.e. the edge lengths of
+the grid cells). Save the results in 2D grids.
 
-*Assume that grid points are the corner cells.*
+*Might need a picture here*
 
 
 Solution
@@ -147,14 +190,11 @@ Solution
 
 .. code:: python
 
-   lon_axis = np.linspace(-180., 180, 73)
-   lat_axis = np.linspace(-90., 90., 37)
-   lon, lat = np.meshgrid(lon_axis, lat_axis)
+   lon, lat = np.meshgrid(lon_axis, lat_axis) * np.pi / 180.
 
    r_E = 6.38e6
-   d_lon = lat[:, 1:] - lat[:, :-1]
-   d_lat = lon[1:, :] - lon[:-1, :]
+   x = r_E * np.cos(lat) * lon
+   y = r_E * lat
 
-   lat_midpt = 0.5 * (lat[1:, :] + lat[:-1, :])
-   dx = r_E * np.cos(lat * np.pi / 180.) * d_lon
-   dy = r_E * d_lat
+   dx = x[:, 1:] - x[:, :-1]
+   dy = y[1:, :] - y[:-1, :]
