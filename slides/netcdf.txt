@@ -45,12 +45,5 @@ netCDF formats
 ``NETCDF3_64BIT``
    Older netCDF3 format, but with >2GiB support
 
-<<<<<<< HEAD
-  - Based on HDF5 (generic data format)
-  - More than one unlimited dimension possible
-  - Full 64-bit support, no more file limit (for now)
-  - Evolving
-=======
 ``NETCDF3_CLASSIC``
    Standard 32-bit netCDF3 format. 2GiB file size limit.
->>>>>>> e56fc71885318485b94351c1276319f77d51d7df
