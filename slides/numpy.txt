@@ -17,9 +17,9 @@ Lists vs. Arrays
 
 The Python ``list``:
 
-* Generic data structure, but...
+* Flexible data structure, but...
 
-* Slow to manipulate elements
+* Slow to manipulate data
 
 The ``ndarray``:
 
@@ -99,8 +99,8 @@ Solution
    N_lon = round((lon_e - lon_w) / d_lon)
 
    lat_axis = np.linspace(lat_s, lat_n, N_lat)
-   lon_axis = np.linspace(lon_w, lon_e - d_lon,
-                          N_lon)
+   lon_axis = np.linspace(lon_w, lon_e, N_lon,
+                          endpoint=False)
 
 
 Basic Indexing
@@ -157,10 +157,57 @@ NumPy (via C) is fast, but context switching is slow
 **Don't loop, do vectorize**
 
 
-Multidimensional arrays and shapes
-==================================
+Multidimensional arrays
+=======================
 
-*Keep this basic, we need to wrap up and move on to NetCDF*
+Create multidimensional arrays:
+
+.. code:: python
+
+   x = np.array([[1, 2, 3], [4, 5, 6]])
+   y = np.zeros((2, 3))
+
+Initialize `z` with the shape of `x`:
+
+.. code:: python
+
+   z = np.zeros_like(x)
+
+Same with ``empty_like`` and ``ones_like``
+
+
+Multidimensional indexing
+=========================
+
+.. code:: python
+
+   >> x = np.array([[1, 2, 3], [4, 5, 6]])
+   >> x
+   array([[1, 2, 3],
+          [4, 5, 6]])
+
+   >> x[:, 0]
+   array([1, 2, 3])
+
+   >> x[0, :]
+   array([1, 4])
+
+
+Grid generation
+===============
+
+Manipulating 2D data needs a 2D grid. Use ``meshgrid``:
+
+.. code:: python
+
+   x_ax = np.linspace(-1., 1., 0.1)
+   y_ax = np.linspace(0., 1., 0.1)
+
+   x, y = np.meshgrid(x_ax, y_ax)
+
+``x`` and ``y`` map the grid to physical values.
+
+How do they look? What is their shape?
 
 
 Exercise
@@ -171,13 +218,11 @@ For latitude :math:`\phi`, longitude :math:`\lambda`, and Earth radius
 
 .. math::
 
-   \Delta x &= r_E \cos \phi \times \Delta \lambda \\
-   \Delta y &= r_E \times \Delta \phi
+   x &= r_E \cos \phi \times \lambda \\
+   y &= r_E \times \phi
 
 calculate the distance between adjancent grid cells (i.e. the edge lengths of
-the grid cells). Save the results in 2D grids.
-
-*Might need a picture here*
+the grid cells) and ave the results in 2D grids.
 
 
 Solution

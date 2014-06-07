@@ -11,34 +11,16 @@ A Python Tutorial for Climate Scientists
 .. footer:: ANU |bullet| 16-17 June 2014
 
 
-Introduction
-============
-
-Subjects we plan to cover
-
-* NumPy
-
-* NetCDF4-Python
-
-* Matplotlib
-
-* Basemap
-
-
 Outline
 =======
 
-* Introduction to NumPy
-
-* Introduction to NetCDF
+* Basic NumPy
 
 * NetCDF in Python
 
 * Advanced NumPy
 
-* Basic Matlotlib
-
-* Advanced Matplotlib
+* Matplotlib
 
 * Basemap
 
