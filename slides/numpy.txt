@@ -144,7 +144,7 @@ Which is faster?
 Exercise
 ========
 
-Calculate the squares of the first 10 million nonzero integers using
+Calculate the squares of the first 10 million nonnegative integers using
 
 * List comprehension
 
