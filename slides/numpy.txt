@@ -3,7 +3,7 @@ Introduction to NumPy
 
 NumPy: Efficient analysis of numerical data
 
-This is a brief overview of NumPy basics.
+Foundation for (almost) all numerical Python modules
 
 To get started, import the module:
 
@@ -141,6 +141,32 @@ or broadcast values across an axis:
 Which is faster?
 
 
+Exercise
+========
+
+Calculate the squares of the first 10 million nonzero integers using
+
+* List comprehension
+
+* Vectorized NumPy expression
+
+
+Solution
+========
+
+List comprehension:
+
+.. code:: python
+
+   x_list = [i**2 for i in xrange(1e7)]
+
+NumPy vectorization:
+
+.. code:: python
+
+   x_np np.arange(1e7)**2
+
+
 Context Switching
 =================
 
@@ -241,3 +267,19 @@ Solution
 
    dx = x[:, 1:] - x[:, :-1]
    dy = y[1:, :] - y[:-1, :]
+
+
+NumPy Summary
+=============
+
+Basic concepts:
+
+* Use ``ndarrays``
+
+* Create arrays: ``arange``, ``linspace``, ``empty``, ...
+
+* Create grids: ``meshgrid``, ``mgrid``
+
+* **Vectorize your code**
+
+The battle to get NumPy into the Standard Library continues...

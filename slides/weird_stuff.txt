@@ -53,12 +53,18 @@ I feel like these must be useful but I never use them
 Hard stuff
 ==========
 
+strides
+-------
+
+This is a trendy topic, and essential to advanced numpy performance, but
+perhaps too advanced?
+
 
 cache line
 ----------
 Hard to get right in an example though
 
 
-custum ufuncs
+custom ufuncs
 -------------
 This is a cool topic that I know nothing about
