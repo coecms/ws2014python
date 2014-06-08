@@ -141,6 +141,22 @@ or broadcast values across an axis:
 Which is faster?
 
 
+Context Switching
+=================
+
+How NumPy works:
+
+1. Prepare a numerical calculation in Python
+
+2. Send the job to C libraries
+
+3. Return the result to Python
+
+NumPy is fast, but context switching is slow
+
+**Don't loop, do vectorize**
+
+
 Exercise
 ========
 
@@ -167,22 +183,6 @@ NumPy vectorization:
    x_np = np.arange(1e7)**2
 
 
-Context Switching
-=================
-
-How NumPy works:
-
-1. Prepare a numerical calculation in Python
-
-2. Send the job to C libraries
-
-3. Return the result to Python
-
-NumPy (via C) is fast, but context switching is slow
-
-**Don't loop, do vectorize**
-
-
 Multidimensional arrays
 =======================
 
@@ -199,7 +199,7 @@ Initialize ``z`` with the shape of ``x``:
 
    z = np.zeros_like(x)
 
-Same with ``empty_like`` and ``ones_like``
+(also ``empty_like`` and ``ones_like``)
 
 
 Multidimensional indexing
@@ -248,7 +248,7 @@ For latitude :math:`\phi`, longitude :math:`\lambda`, and Earth radius
    y &= r_E \times \phi
 
 calculate the distance between adjancent grid cells (i.e. the edge lengths of
-the grid cells) and ave the results in 2D grids.
+the grid cells) and save the results in 2D grids.
 
 
 Solution
@@ -256,7 +256,7 @@ Solution
 
 .. code:: python
 
-   lon, lat = np.meshgrid(lon_axis, lat_axis) \
+   lon, lat = np.meshgrid(lon_axis, lat_axis)
                * np.pi / 180.
 
    r_E = 6.38e6

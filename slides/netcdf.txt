@@ -17,13 +17,11 @@ Binary gridded data format with the following goals:
 Basic Structure
 ===============
 
-Three basic components:
-
 Dimensions
-   Sizes of each dimension axis (even "unlimited")
+   Sizes of each dimension axis (or "unlimited")
 
 Variables
-   Numerical data and its shape (based on Dimensions)
+   Numerical data and its shape
 
 Attributes
    Metadata describing contents
@@ -36,13 +34,13 @@ netCDF formats
    Standard, fully featured format
 
 ``NETCDF4_CLASSIC``
-   like netCDF4, but only netCDF3-compatible features are included
+   netCDF4, but only netCDF3-compatible features
 
 ``NETCDF3_64BIT``
-   Older netCDF3 format, but with >2GiB support
+   Older netCDF3 format, large >2GiB files
 
 ``NETCDF3_CLASSIC``
-   Standard 32-bit netCDF3 format. 2GiB size limit.
+   Standard 32-bit netCDF3, 2GiB size limit
 
 
 NetCDF4 Python
@@ -51,8 +49,6 @@ NetCDF4 Python
 The ``netCDF4`` package is a Python interface to the NetCDF4 library, and
 provides a fast and fully-featured API for reading and creating NetCDF files
 with Python.
-
-Jeffrey Whitaker (NOAA ESRL) is the creator and maintainer of ``netCDF4``.
 
 
 My first netCDF file
@@ -67,8 +63,6 @@ Import the ``netCDF4`` package and create a new file:
   latlon = netCDF4.Dataset('latlon.nc', 'w',
                            format='NETCDF4')
   latlon.close()
-
-Inspect your (empty) file with ``ncdump`` (or Panoply).
 
 
 File mode options
@@ -117,12 +111,12 @@ Create variables which map to the dimensions:
 
 .. code:: python
 
-   lat_nc = latlon.createVariable('latitude', 'f8',
-                                  ('latitude',))
-   lon_nc = latlon.createVariable('longitude', 'f8',
-                                  ('longitude',))
-   time_nc = latlon.createVariable('time', 'f8',
-                                   ('time',))
+   lat_nc = latlon.createVariable('latitude',
+                           'f8', ('latitude',))
+   lon_nc = latlon.createVariable('longitude',
+                           'f8', ('longitude',))
+   time_nc = latlon.createVariable('time',
+                           'f8', ('time',))
 
 
 Write Variables
@@ -177,3 +171,5 @@ Less common but useful features of netCDF:
 * Compression
 
 * Variable-length (vlen) arrays
+
+Now, back to NumPy...

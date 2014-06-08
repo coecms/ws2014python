@@ -4,8 +4,6 @@ Basemap matplotlib toolkit
 Basemap is an extension to matplotlib for plotting geographic data on standard
 map projections.
 
-Jeffrey Whitaker (NOAA ESRL) is also the creator/maintainer of ``basemap``.
-
 Load it from the ``matplotlib`` toolkit:
 
 .. code:: python

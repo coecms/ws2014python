@@ -1,31 +1,125 @@
 Performance NumPy
 =================
 
-Talk about NumPy's implementation in memory here
+The Zen of NumPy
 
-*But not too much*
+* Data arrays are better than objects.
 
-Maybe show ``x.data.tobytes()`` for ``dtype=uint8``
+* Contiguous is better than strided.
+
+* Strided is better than scattered.
+
+* Broadcasting is better than reshaping.
+
+* Vectorization is better than looping...
+
+* ... unless it's too complicated; go compile!
+
+(Paraphrased from Travis Oliphant)
+
+
+Array structure
+===============
+
+.. code:: python
+
+   x = np.arange(24).reshape(2, 3, 4)
+
+What do these tell us?
+
+============== ==================
+``x.size``     ``(2, 3, 4)``
+``x.shape``    ``24``
+``x.dtype``    ``dtype('int64')``
+``x.itemsize`` ``8``
+``x.nbytes``   ``192``
+``x.strides``  ``(96, 32, 8)``
+============== ==================
+
+
+Inside the array
+================
+
+Look at the data:
+
+.. code:: python
+
+   x = np.array([[1, 2, 3], [4, 5, 6]],
+                dtype=np.int8)
+
+Data of any shape is always a sequence:
+
++----+----+----+----+----+----+
+|0x01|0x02|0x03|0x04|0x05|0x06|
++----+----+----+----+----+----+
+
+CPUs work most efficiently along this "vector".
+
+
+NumPy memory order
+==================
+
+Row-major ("C") vs column-major ("Fortran")
+
+.. code:: python
+
+   x = np.array([[1, 2, 3], [4, 5, 6]],
+                dtype=np.uint8, order='C')
+
++----+----+----+----+----+----+
+|0x01|0x02|0x03|0x04|0x05|0x06|
++----+----+----+----+----+----+
+
+.. code:: python
+
+   y = np.array([[1, 2, 3], [4, 5, 6]],
+                dtype=np.uint8, order='F')
+
++----+----+----+----+----+----+
+|0x01|0x04|0x02|0x05|0x03|0x06|
++----+----+----+----+----+----+
+
+
+Quiz
+====
+
+1. Which is faster?
+
+   * ``np.arange(1e4).sum()``
+
+   * ``np.arange(8e4)[::8].sum()?``
+
+2. Which is faster?
+
+   * ``np.arange(1e4).sum()``
+
+   * ``np.arange(1e4)[::-1].sum()``
+
+3. If ``x.shape`` is ``(10, 10)``, which is contiguous?
+
+   * ``x[:, 3:7]``
+
+   * ``x[3:7, :]``
 
 
 "Fast" indexing
 ===============
 
-How do we index :math:`u = u(x, y, z, t)`?
+How do we index something like :math:`u(x, y, z, t)`?
 
-"C" ordering:
+Row-major (``order='C'``):
 
-.. code:: c
+.. code:: python
 
-   double u[n_t][n_z][n_lat][n_lon];
+   x = np.empty(n_t, n_z, n_y, n_x)
 
-"Fortran" ordering:
+Column-major (``order='F'``):
 
-.. code:: fortran
+.. code:: python
 
-   real, dimension(n_lon, n_lat, n_z, n_t) :: u
+   x = np.empty(n_x, n_y, n_z, n_t)
 
-NumPy defaults to C order, but you can change it.
+Which variable should be contiguous?
 
 
 Memory Usage
@@ -35,14 +129,27 @@ How much memory does this use?
 
 .. code:: python
 
-   x = ...
+   x = np.empty(N, ...)
    for i in range(N):
-      y = f(x)
+      y = f(...)
       x[i] = y
 
-``y`` is bound to the previous evaulation of ``f``, so it cannot be cleared.
 
-Garbage collection is not psychic. Use ``del y`` to help it along.
+Memory Usage
+============
+
+Mem usage: ``x.nbytes + 2 * y.nbytes``
+
+.. code:: python
+
+   x = np.empty(N, ...)
+   for i in range(N):
+      y = f(...)
+      x[i] = y
+      del y
+
+``y`` is bound to ``f``, so it is saved until ``f`` is re-evaluated. Use ``del
+y`` to release early.
 
 
 Copying Arrays
@@ -106,6 +213,20 @@ Broadcasting Rules
 
 Outer axes are *broadcast* to inner axes
 
+This is an explicit ``(N,)`` to ``(M, N)`` broadcast:
+
+.. code:: python
+
+   x = np.empty((3,4))
+   x[:] = np.arange(4)
+
+This is an implicit ``(1,)``-to-\ ``(N,)`` broadcast:
+
+.. code:: python
+
+   x = np.empty(100)
+   x[:] = 5.
+
 
 Extending dimensions
 ====================
@@ -119,14 +240,13 @@ What if you want to broadcast an inner dimension? Use ``newaxis``:
 
    x * y[:, np.newaxis]
 
-This is an *implicit broadcast*. Dimensions of 1 are broadcast to match the
-other array.
+This is another implicit broadcast.
 
 
 Implicit indexing
 =================
 
-You can omit all inner indices with the ``...`` operator:
+You can omit all inner indices with ``...``:
 
 .. code:: python
 
@@ -136,8 +256,8 @@ The following two assignments are equivalent:
 
 .. code:: python
 
-   x[:, :, 0] = 0.
-   x[..., 0] = 0.
+   x[:, :, :, 2, 3] = 0.
+   x[..., 2, 3] = 0.
 
 Useful when looping over arrays of different shapes.
 
