@@ -167,7 +167,7 @@ Create multidimensional arrays:
    x = np.array([[1, 2, 3], [4, 5, 6]])
    y = np.zeros((2, 3))
 
-Initialize `z` with the shape of `x`:
+Initialize ``z`` with the shape of ``x``:
 
 .. code:: python
 
@@ -178,6 +178,8 @@ Same with ``empty_like`` and ``ones_like``
 
 Multidimensional indexing
 =========================
+
+As you expect:
 
 .. code:: python
 
@@ -230,7 +232,8 @@ Solution
 
 .. code:: python
 
-   lon, lat = np.meshgrid(lon_axis, lat_axis) * np.pi / 180.
+   lon, lat = np.meshgrid(lon_axis, lat_axis) \
+               * np.pi / 180.
 
    r_E = 6.38e6
    x = r_E * np.cos(lat) * lon

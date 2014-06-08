@@ -1,6 +1,6 @@
 TARGET=slides.html
 SOURCE=index.txt
-SRCS=numpy.txt netcdf.txt n4py.txt more_numpy.txt vector.txt mpl.txt basemap.txt
+SRCS=numpy.txt netcdf.txt more_numpy.txt vector.txt mpl.txt basemap.txt
 MATH=mathjax
 
 all: $(TARGET)
