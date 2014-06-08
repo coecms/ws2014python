@@ -158,7 +158,7 @@ List comprehension:
 
 .. code:: python
 
-   x_list = [i**2 for i in xrange(1e7)]
+   x_list = [i**2 for i in xrange(int(1e7))]
 
 NumPy vectorization:
 
