@@ -3,7 +3,6 @@ Stupid arithmetic tricks
 
 accumulate
 ----------
-
 x = np.arange(10)
 np.add.accumulate(x)
 
@@ -28,6 +27,9 @@ I guess people use these a lot
 Index Stuff
 ===========
 
+fromfunction
+------------
+Cool but sorta arcane
 
 take
 ----
@@ -53,9 +55,12 @@ I feel like these must be useful but I never use them
 Hard stuff
 ==========
 
+dtype tuples, recarray
+----------------------
+Cool but often ineffeicient
+
 strides
 -------
-
 This is a trendy topic, and essential to advanced numpy performance, but
 perhaps too advanced?
 

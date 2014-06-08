@@ -42,7 +42,7 @@ netCDF formats
    Older netCDF3 format, but with >2GiB support
 
 ``NETCDF3_CLASSIC``
-   Standard 32-bit netCDF3 format. 2GiB file size limit.
+   Standard 32-bit netCDF3 format. 2GiB size limit.
 
 
 NetCDF4 Python
@@ -165,6 +165,8 @@ TODO
 
 Other Topics
 ============
+
+Less common but useful features of netCDF:
 
 * netCDF Groups
 

@@ -205,8 +205,6 @@ Same with ``empty_like`` and ``ones_like``
 Multidimensional indexing
 =========================
 
-As you expect:
-
 .. code:: python
 
    >> x = np.array([[1, 2, 3], [4, 5, 6]])
@@ -281,5 +279,3 @@ Basic concepts:
 * Create grids: ``meshgrid``, ``mgrid``
 
 * **Vectorize your code**
-
-The battle to get NumPy into the Standard Library continues...
