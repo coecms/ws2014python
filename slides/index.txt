@@ -28,8 +28,6 @@ Outline
 
 .. include:: netcdf.txt
 
-.. include:: n4py.txt
-
 .. include:: more_numpy.txt
 
 .. include:: vector.txt
