@@ -1,4 +1,4 @@
-Introduction to NumPy
+atroduction to NumPy
 =====================
 
 NumPy: Efficient analysis of numerical data
@@ -164,7 +164,7 @@ NumPy vectorization:
 
 .. code:: python
 
-   x_np np.arange(1e7)**2
+   x_np = np.arange(1e7)**2
 
 
 Context Switching
