@@ -30,8 +30,6 @@ Outline
 
 .. include:: more_numpy.txt
 
-.. include:: vector.txt
-
 .. include:: mpl.txt
 
 .. include:: basemap.txt

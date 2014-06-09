@@ -1,4 +1,4 @@
-atroduction to NumPy
+Introduction to NumPy
 =====================
 
 NumPy: Efficient analysis of numerical data
@@ -157,30 +157,72 @@ NumPy is fast, but context switching is slow
 **Don't loop, do vectorize**
 
 
+Vectorized operations
+=====================
+
+These all give the same result:
+
+.. code:: python
+
+   z = x + y
+
+   z[:] = x[:] + y[:]
+
+   for i in len(x):
+      z[i] = x[i] + y[i]
+
+All operators are per-element
+
+
+Vectorized functions
+====================
+
+Standard functions are available:
+
+.. code:: python
+
+   np.sin(x)
+   np.exp(x)
+   np.arctan(x)
+
+Reduction operators also exist:
+
+.. code:: python
+
+   np.sum(x)
+   np.cumsum(x)
+   np.mean(x)
+
+
 Exercise
 ========
 
-Calculate the squares of the first 10 million nonnegative integers using
+1. Calculate the squares of the first 10 million non-negative integers using
 
-* List comprehension
+   * List comprehension
 
-* Vectorized NumPy expression
+   * Vectorized NumPy expression
+
+2. Calculate the sum of the first :math:`N` integers, up to :math:`N = 100`.
 
 
 Solution
 ========
 
-List comprehension:
+1. Both shown below:
 
-.. code:: python
+   .. code:: python
 
-   x_list = [i**2 for i in xrange(int(1e7))]
+      x_list = [i**2 for i in xrange(int(1e7))]
+      x_np = np.arange(1e7)**2
 
-NumPy vectorization:
+2. The answer is :math:`\tfrac{1}{2} N (N + 1)`, but use ``cumsum``:
 
-.. code:: python
+   .. code:: python
 
-   x_np = np.arange(1e7)**2
+      x_eqn = np.arange(1, 101) * np.arange(2, 102)
+                  // 2
+      x_sum = np.cumsum(np.arange(101))
 
 
 Multidimensional arrays
@@ -276,6 +318,10 @@ Basic concepts:
 
 * Create arrays: ``arange``, ``linspace``, ``empty``, ...
 
+* Vectorized functions: ``sin``, ``exp``, ``sum``, ``mean``
+
 * Create grids: ``meshgrid``, ``mgrid``
 
 * **Vectorize your code**
+
+Next, how to load data?
