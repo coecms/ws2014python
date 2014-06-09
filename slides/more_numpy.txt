@@ -266,7 +266,8 @@ Useful when looping over arrays of different shapes.
 Exercise
 ========
 
-Calculate :math:`d/dx \sin x` on :math:`[0, 10)` using a forward difference:
+Calculate :math:`\tfrac{d}{dx} \sin x` on :math:`[0, 10)` using a forward
+difference:
 
 .. math:: \frac{d}{dx} \left(\sin x \right)
             \approx \frac{\sin (x + h) - \sin x}{h}
@@ -368,6 +369,7 @@ Slow convergence, but it works:
 
 Boolean arrays
 ==============
+TODO: Needs ``nonzeros`` example
 
 Set the negative values to zero:
 
@@ -386,8 +388,7 @@ Or just save a line
 
 Masked Arrays
 =============
-
-Exposition here
+TODO: Explanation
 
 .. code:: python
 
@@ -395,4 +396,11 @@ Exposition here
    x_m = np.ma.masked_array(x, x > 0.5)
 
 
+Exercise
+========
+TODO: Need a masked array exercise
 
+
+Summary
+=======
+TODO

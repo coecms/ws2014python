@@ -23,8 +23,7 @@ Create the basemap object:
    lat_c, lon_c = -24.25, 133.5
 
    m = Basemap(projection='ortho',
-               lat_0=lat_c,
-               lon_0=lon_c)
+               lat_0=lat_c, lon_0=lon_c)
 
 Draw the basic map features:
 
