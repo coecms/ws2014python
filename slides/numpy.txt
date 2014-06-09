@@ -222,7 +222,7 @@ Solution
 
       x_eqn = np.arange(1, 101) * np.arange(2, 102)
                   // 2
-      x_sum = np.cumsum(np.arange(101))
+      x_sum = np.cumsum(np.arange(1, 101))
 
 
 Multidimensional arrays
@@ -314,7 +314,7 @@ NumPy Summary
 
 Basic concepts:
 
-* Use ``ndarrays``
+* Use NumPy arrays (``ndarray``)
 
 * Create arrays: ``arange``, ``linspace``, ``empty``, ...
 

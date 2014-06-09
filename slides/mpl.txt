@@ -22,9 +22,8 @@ Plot :math:`\sin x` from :math:`0` to :math:`3\pi`:
 .. code:: python
 
    x = np.linspace(0., 3. * np.pi, 25)
-   y = np.sin(x)
 
-   plt.plot(x, y)
+   plt.plot(x, np.sin(x))
    plt.show()
 
 In the python shell, use interactive mode:
@@ -98,7 +97,7 @@ masked). We did dx and dy so adding dA should be OK.
 Plot objects
 ============
 
-More advanced plotting requires manipulation of elements:
+More advanced plotting requires object manipulation:
 
 .. code:: python
 

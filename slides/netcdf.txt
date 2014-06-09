@@ -144,14 +144,44 @@ Add attributes using the dereference (``.``) operator:
    time_nc.calendar = 'gregorian'
 
 
+Finalize your data
+==================
+
+When you're done, remember to ``close()`` your file:
+
+.. code:: python
+
+   f_nc.close()
+
+Now take a look at your file
+
+
 Exercise
 ========
-TODO
+
+Open the ``sst.nc`` in ``netCDF4`` and
+
+1. Search the file for the sea surface temperature
+
+2. Rend and compute the mean global SST as a time series
+
+   *This is probably too advanced at this stage, move to later section*
 
 
 Solution
 ========
-TODO
+
+.. code:: python
+
+   sst_nc = nc.Dataset('SSTK_6hrs_sfc_2000_01.nc', 'r')
+   sst = sst_nc.variables['SSTK_GDS0_SFC'][:]
+
+   sst_mean = sst.reshape(124, -1).mean(axis=-1)
+
+Comments:
+   * None of the techniques are actually explained here
+   * SST is masked, unnecessary detail at this stage
+   * That mean calculation is too advanced at this point
 
 
 Other Topics
