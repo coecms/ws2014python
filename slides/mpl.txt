@@ -94,6 +94,24 @@ Maybe we can use area-weighted cells to do a (T * dA) / A calculation? (and
 masked). We did dx and dy so adding dA should be OK.
 
 
+Solution
+========
+TODO: Move SST mean calculation to an older exercise?
+
+.. code:: python
+
+   sst_nc = nc.Dataset('sst.nc', 'r')
+   t = sst_nc.variables['initial_time0_hours'][:]
+   sst = sst_nc.variables['SSTK_GDS0_SFC'][:]
+
+   # This needs to be area-weighted
+   sst_mean = np.mean(sst.reshape(sst.shape[0], -1),
+                      axis=-1)
+
+   plt.plot((t - t[0]) / 24., sst_mean - 273.15)
+   plt.show()
+
+
 Plot objects
 ============
 
