@@ -28,8 +28,8 @@ Array structure
 What do these tell us?
 
 ============== ==================
-``x.size``     ``(2, 3, 4)``
-``x.shape``    ``24``
+``x.size``     ``24``
+``x.shape``    ``(2, 3, 4)``
 ``x.dtype``    ``dtype('int64')``
 ``x.itemsize`` ``8``
 ``x.nbytes``   ``192``
