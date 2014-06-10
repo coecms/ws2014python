@@ -156,6 +156,24 @@ When you're done, remember to ``close()`` your file:
 Now take a look at your file
 
 
+Reading files
+=============
+
+Variables are stored in ``dict``\ s, use ``[:]`` to get data:
+
+.. code:: python
+
+   some_var_nc = f_nc.variables['some_var']
+   some_var = f_nc.variables['some_var'][:]
+
+Dimensions are similarly accessed, use ``len`` to get size:
+
+.. code:: python
+
+   dim_nc = f_nc.dimensions['some_dim']
+   N_dim = len(dim_nc)
+
+
 Exercise
 ========
 
