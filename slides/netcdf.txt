@@ -103,7 +103,7 @@ unlimited time axis:
 Creating new variables
 ======================
 
-Create variables which map to the dimensions:
+Create variables for the axes, and a dummy temperature field:
 
 .. code:: python
 
@@ -113,6 +113,9 @@ Create variables which map to the dimensions:
                                  ('longitude',))
    time_nc = f_nc.createVariable('time', 'f8',
                                  ('time',))
+
+   p_nc = f_nc.createVariable('pressure', 'f8',
+                ('time', 'latitide', 'longitude'))
 
 
 Write Variables
@@ -125,6 +128,8 @@ To write variables to file, include the index reference (``[:]``):
    lat_nc[:] = lat_axis
    lon_nc[:] = lon_axis
    time_nc[:] = np.array([0.])
+
+   p_nc[:] = 0.
 
 
 Attributes
@@ -153,7 +158,7 @@ When you're done, remember to ``close()`` your file:
 
    f_nc.close()
 
-Now take a look at your file
+Now take a look at your (boring) file.
 
 
 Reading files
@@ -172,34 +177,6 @@ Dimensions are similarly accessed, use ``len`` to get size:
 
    dim_nc = f_nc.dimensions['some_dim']
    N_dim = len(dim_nc)
-
-
-Exercise
-========
-
-Open the ``sst.nc`` in ``netCDF4`` and
-
-1. Search the file for the sea surface temperature
-
-2. Rend and compute the mean global SST as a time series
-
-   *This is probably too advanced at this stage, move to later section*
-
-
-Solution
-========
-
-.. code:: python
-
-   sst_nc = nc.Dataset('SSTK_6hrs_sfc_2000_01.nc', 'r')
-   sst = sst_nc.variables['SSTK_GDS0_SFC'][:]
-
-   sst_mean = sst.reshape(124, -1).mean(axis=-1)
-
-Comments:
-   * None of the techniques are actually explained here
-   * SST is masked, unnecessary detail at this stage
-   * That mean calculation is too advanced at this point
 
 
 Other Topics

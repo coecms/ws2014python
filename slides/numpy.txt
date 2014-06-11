@@ -15,13 +15,13 @@ To get started, import the module:
 Lists vs. Arrays
 ================
 
-The Python ``list``:
+Python's ``list``:
 
 * Flexible data structure, but...
 
 * Slow to manipulate data
 
-The ``ndarray``:
+NumPy's ``ndarray``:
 
 * Data stored in contiguous memory blocks
 
@@ -177,7 +177,7 @@ All operators are per-element
 Vectorized functions
 ====================
 
-Standard functions are available:
+Per-element functions are available:
 
 .. code:: python
 
@@ -189,9 +189,9 @@ Reduction operators also exist:
 
 .. code:: python
 
-   np.sum(x)
+   np.sum(x),  np.mean(x)
+   np.max(x),  np.min(x)
    np.cumsum(x)
-   np.mean(x)
 
 
 Exercise
@@ -222,7 +222,7 @@ Solution
 
       x_eqn = np.arange(1, 101) * np.arange(2, 102)
                   // 2
-      x_sum = np.cumsum(np.arange(1, 101))
+      x_cum = np.cumsum(np.arange(1, 101))
 
 
 Multidimensional arrays
@@ -233,7 +233,7 @@ Create multidimensional arrays:
 .. code:: python
 
    x = np.array([[1, 2, 3], [4, 5, 6]])
-   y = np.zeros((2, 3))
+   y = np.zeros((2, 3))    # Note: Tuple input
 
 Initialize ``z`` with the shape of ``x``:
 
@@ -254,10 +254,10 @@ Multidimensional indexing
    array([[1, 2, 3],
           [4, 5, 6]])
 
-   >> x[:, 0]
+   >> x[0, :]        # or x[0]
    array([1, 2, 3])
 
-   >> x[0, :]
+   >> x[:, 0]
    array([1, 4])
 
 
@@ -320,7 +320,7 @@ Basic concepts:
 
 * Vectorized functions: ``sin``, ``exp``, ``sum``, ``mean``
 
-* Create grids: ``meshgrid``, ``mgrid``
+* Create grids: ``meshgrid``
 
 * **Vectorize your code**
 

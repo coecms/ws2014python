@@ -327,44 +327,36 @@ Another uses the ``einsum`` function:
 Exercise
 ========
 
-Solve :math:`\nabla^2 \phi = 0` on a 2D square, with
+For a 2D time series, either SST or this random matrix:
 
-.. math::
+.. code:: python
 
-   \phi(x, 0) &= 0   &  \phi(x, 1) &= 0 \\
-   \phi(0, y) &= 0   &  \phi(1, y) &= \sin \pi x
+   N_t, N_y, N_x = 50, 37, 73
+   x = np.random.randn(N_t, N_y, N_x)
 
-Use iteration:
-
-.. math::
-
-   \phi_{i+1, j} + \phi_{i-1, j} + \phi_{i, j+1} + \phi_{i, j-1}
-      - 4 \phi_{ij} = 0
-
-   \phi^{(n+1)}_{ij} = \frac{1}{4} \left(
-                                 \phi^{(n)}_{i+1, j} + \phi^{(n)}_{i-1, j}
-                                 + \phi^{(n)}_{i, j+1} + \phi^{(n)}_{i, j-1}
-                        \right)
+Calculate the mean time series, ``x_mean[N_t]``
 
 
 Solution
 ========
 
-Slow convergence, but it works:
+One solution is to unravel the space dims
 
 .. code:: python
 
-   a = np.linspace(0., 1., 101)
-   x, y = np.meshgrid(a, a)
+   x_mean = x.reshape(N_t, N_y * N_x).mean(axis=1)
 
-   p = np.zeros_like(x)
-   p[-1, :] = np.sin(np.pi * a)
+This is slightly more general:
 
-   for i in xrange(10000):
-       p[1:-1, 1:-1] = 0.25 * (  p[:-2, 1:-1]
-                               + p[2:, 1:-1]
-                               + p[1:-1, :-2]
-                               + p[1:-1, 2:] )
+.. code:: python
+
+   x_mean = x.reshape(N_t, -1).mean(axis=-1)
+
+or use multidimensional axes:
+
+.. code:: python
+
+   x_mean = x.mean(axis=(1, 2))
 
 
 Boolean arrays
