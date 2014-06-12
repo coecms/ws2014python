@@ -105,6 +105,78 @@ Use the basemap object to convert **grids** to **map projections**:
 
 Exercise
 ========
-TODO
 
-Plot some data from the previous exercises on different projections
+Load the SST dataset and plot the following projections:
+
+1. Orthographic, centered at (:math:`25^\circ`\ W, :math:`133^\circ`\ E)
+
+2. Mercator projection from :math:`280^\circ`\ W to :math:`80^\circ`\ E
+
+3. Polar Stereographic map (``spstere``) up to :math:`40^\circ`\ S
+
+
+Solution
+========
+
+Setting up the plots:
+
+.. code:: python
+
+   sst_nc = nc.Dataset('SSTK_6hrs_sfc_2000_01.nc', 'r')
+
+   lon_ax = sst_nc.variables['g0_lon_2'][:]
+   lat_ax = sst_nc.variables['g0_lat_1'][:]
+   sst = sst_nc.variables['SSTK_GDS0_SFC'][:]
+
+
+Solution
+========
+
+1. .. code:: python
+
+      lon, lat = np.meshgrid(lon_ax, lat_ax)
+
+      ortho_map = Basemap(projection='ortho',
+                        lat_0=-24.25, lon_0=133.5)
+
+      ortho_map.drawmapboundary()
+      ortho_map.drawcoastlines()
+      ortho_map.fillcontinents(color='coral')
+
+      x, y = ortho_map(lon, lat)
+
+
+Solution
+========
+
+2. .. code:: python
+
+      sst_s, lon_s_ax = shiftgrid(80., sst, lon_ax,
+                                  start=False)
+      lon_s, lat_s = np.meshgrid(lon_s, lat)
+
+      merc_map = Basemap(projection='merc',
+                  llcrnrlat=-80., urcrnrlat=80.,
+                  llcrnrlon=-280., urcrnrlon=80.)
+
+      # Draw and color boundaries
+
+      x_s, y_s = merc_map(lon_s, lat_s)
+      merc_map.pcolormesh(x_s, y_s, sst_s)
+
+
+Solution
+========
+
+3. .. code:: python
+
+      lon_r = np.ma.concatenate(
+                  [lon, lon[:, np.newaxis, 0]],
+                  axis=-1)
+      lat_r, sst_r = ...
+
+      polar_map = Basemap(projection='spstere',
+                     boundinglat=-40., lon_0=90.)
+
+      x_r, y_r = polar_map(lon_r, lat_r)
+      merc_map.pcolormesh(x_r, y_r, sst_r)

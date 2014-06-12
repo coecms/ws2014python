@@ -362,6 +362,101 @@ or take the functional approach:
    x_mean = np.apply_over_axes(np.sum, x, (1, 2))
 
 
+Fancy Indexing
+==============
+
+Arrays can be access by integers (and slices):
+
+.. code:: python
+
+   >> x = np.arange(10)**2
+   >> x[4]
+   16
+
+but also by index arrays:
+
+.. code:: python
+
+   >> idx = [1, 4, 7, 9, 2]
+   >> x[idx]
+   array([1, 16, 49, 81, 4])
+
+
+Multidim index arrays
+=====================
+
+Using index arrays preserves their shape:
+
+.. code:: python
+
+   >> x = np.arange(10)**2
+   >> idx = np.array([[2, 3], [4, 5]])
+   >> x[idx]
+   array([[ 4,  9],
+          [16, 25]])
+
+Note that the original shape of ``x`` is lost.
+
+Multidimensional index arrays must be ``ndarray``\ s.
+
+
+Indexing multidim arrays
+========================
+
+Things get tricky with multidimensional arrays. Take this:
+
+.. code:: python
+
+   x = (np.arange(12)**2).reshape(3, 4)
+
+What does ``x[idx]`` give for these cases?
+
+1. .. code:: python
+
+      idx = np.array([2, 0, 1])
+
+2. .. code:: python
+
+      idx = np.array([[0, 1], [1, 2]])
+
+
+Solution
+========
+
+1. .. code:: python
+
+      array([[ 64,  81, 100, 121],
+             [  0,   1,   4,   9],
+             [ 16,  25,  36,  49]])
+
+   Each index ``i`` is replaced by row ``x[i]``
+
+2. .. code:: python
+
+      array([[[  0,   1,   4,   9],
+              [ 16,  25,  36,  49]],
+             [[ 16,  25,  36,  49],
+              [ 64,  81, 100, 121]]])
+
+   Each index ``k = idx[i, j]`` is replaced with ``x[k]``.
+
+
+Multidim indexing
+=================
+
+So how do we get ``x[2, 3]`` in an index array?
+
+Use a list of index arrays:
+
+.. code:: python
+
+   >> x = (np.arange(12)**2).reshape(3, 4)
+   >> idx = [np.array([0, 1, 2]),
+             np.array([1, 2, 3])]
+   >> x[idx]
+   array([  1,  36, 121])
+
+
 Boolean arrays
 ==============
 TODO: Needs ``nonzeros`` example
