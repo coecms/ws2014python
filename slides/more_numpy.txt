@@ -9,7 +9,7 @@ The Zen of NumPy
 
 * Strided is better than scattered.
 
-* Broadcasting is better than reshaping.
+* Broadcasting is always a good idea.
 
 * Vectorization is better than looping...
 
@@ -337,8 +337,6 @@ For this random matrix:
 Average over the outer axes (``x``, ``y``) to construct a time series,
 ``x_mean``
 
-*Note: Adapt to SST or something?*
-
 
 Solution
 ========
@@ -455,6 +453,43 @@ Use a list of index arrays:
              np.array([1, 2, 3])]
    >> x[idx]
    array([  1,  36, 121])
+
+
+Exercise
+========
+
+For these arrays:
+
+.. code:: python
+
+   x = np.random.randn(4, 5, 6)
+   idx = np.random.randint(0, 2, (5, 6))
+
+How do I vectorise this loop?
+
+.. code:: python
+
+   for j in range(6):
+      for i in range(5):
+         y[j, i] = x[idx[j, i], j, i]
+
+Solution
+========
+
+Use ``mgrid`` (or ``ogrid``) and fancy indexing:
+
+.. code:: python
+
+   J, I = np.mgrid[:5, :6]
+   y = x[[idx, J, I]]
+
+or just
+
+.. code:: python
+
+   y = x[idx, J, I]
+
+(``ogrid`` broadcasts to ``mgrid``)
 
 
 Boolean arrays

@@ -91,7 +91,7 @@ Exercise
 2. Load the sea surface temperature and plot the time series for the mean global
    sea surface (SST vs time).
 
-   *OK to ignore area-weighting here? Should we do that somewhere else?*
+   *Ignore area-weighted mean, just do spatial mean values*
 
 
 Solution
@@ -200,21 +200,6 @@ Basic 3D plotting is available:
    fig = plt.figure()
    ax = fig.gca(projection='3d')
    ax.plot_surface(x, y, z)
-
-
-Exercise
-========
-Maybe read in the geostrophic velocities calcluated before, then plot the
-following:
-
-1. Pressure fields (contourf)
-
-2. Geostrophic velocities (introduce ``quiver``)
-
-
-Solution
-========
-TODO
 
 
 The matplotlib gallery

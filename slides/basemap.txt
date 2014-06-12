@@ -108,7 +108,7 @@ Exercise
 
 Load the SST dataset and plot the following projections:
 
-1. Orthographic, centered at (:math:`25^\circ`\ W, :math:`133^\circ`\ E)
+1. Orthographic, centered at :math:`24^\circ`\ W, :math:`133^\circ`\ E
 
 2. Mercator projection from :math:`280^\circ`\ W to :math:`80^\circ`\ E
 
@@ -122,7 +122,7 @@ Setting up the plots:
 
 .. code:: python
 
-   sst_nc = nc.Dataset('SSTK_6hrs_sfc_2000_01.nc', 'r')
+   sst_nc = nc.Dataset('SSTK_6hrs_sfc_2000_01.nc')
 
    lon_ax = sst_nc.variables['g0_lon_2'][:]
    lat_ax = sst_nc.variables['g0_lat_1'][:]
@@ -137,7 +137,7 @@ Solution
       lon, lat = np.meshgrid(lon_ax, lat_ax)
 
       ortho_map = Basemap(projection='ortho',
-                        lat_0=-24.25, lon_0=133.5)
+                          lat_0=-24., lon_0=133.)
 
       ortho_map.drawmapboundary()
       ortho_map.drawcoastlines()
@@ -158,8 +158,6 @@ Solution
       merc_map = Basemap(projection='merc',
                   llcrnrlat=-80., urcrnrlat=80.,
                   llcrnrlon=-280., urcrnrlon=80.)
-
-      # Draw and color boundaries
 
       x_s, y_s = merc_map(lon_s, lat_s)
       merc_map.pcolormesh(x_s, y_s, sst_s)
