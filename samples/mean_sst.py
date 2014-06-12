@@ -9,9 +9,5 @@ sst = sst_nc.variables['SSTK_GDS0_SFC'][:]
 # This is wrong, needs to be area-weighted
 sst_mean = np.mean(sst.reshape(sst.shape[0], -1), axis=-1)
 
-
-print(sst_mean)
-print(sst_mean.max())
-
-plt.plot(t - t[0], sst_mean - 273.15)
+plt.plot(t - t[0], sst_mean - 273.15, 'x')
 plt.show()

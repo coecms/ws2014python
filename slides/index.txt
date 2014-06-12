@@ -16,9 +16,9 @@ Outline
 
 * Basic NumPy
 
-* NetCDF in Python
-
 * Advanced NumPy
+
+* NetCDF in Python
 
 * Matplotlib
 
@@ -26,16 +26,18 @@ Outline
 
 .. include:: numpy.txt
 
-.. include:: netcdf.txt
-
 .. include:: more_numpy.txt
+
+.. include:: netcdf.txt
 
 .. include:: mpl.txt
 
 .. include:: basemap.txt
 
 
-Thank You
-=========
-
 The End
+=======
+
+Lecture notes are available here:
+
+http://marshallward.org/ws2014python/slides.html

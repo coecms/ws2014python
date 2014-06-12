@@ -103,7 +103,7 @@ unlimited time axis:
 Creating new variables
 ======================
 
-Create variables for the axes, and a dummy temperature field:
+Create variables for the axes, and a dummy pressure field:
 
 .. code:: python
 
@@ -113,7 +113,6 @@ Create variables for the axes, and a dummy temperature field:
                                  ('longitude',))
    time_nc = f_nc.createVariable('time', 'f8',
                                  ('time',))
-
    p_nc = f_nc.createVariable('pressure', 'f8',
                 ('time', 'latitide', 'longitude'))
 
@@ -193,5 +192,3 @@ Less common but useful features of netCDF:
 * Compression
 
 * Variable-length (vlen) arrays
-
-Now, back to NumPy...

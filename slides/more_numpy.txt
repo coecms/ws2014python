@@ -221,7 +221,7 @@ This is an explicit ``(N,)`` to ``(M, N)`` broadcast:
    x = np.empty((3,4))
    x[:] = np.arange(4)
 
-This is an implicit ``(1,)``-to-\ ``(N,)`` broadcast:
+This is an implicit ``(1,)`` to ``(N,)`` broadcast:
 
 .. code:: python
 
@@ -327,36 +327,39 @@ Another uses the ``einsum`` function:
 Exercise
 ========
 
-For a 2D time series, either SST or this random matrix:
+For this random matrix:
 
 .. code:: python
 
    N_t, N_y, N_x = 50, 37, 73
    x = np.random.randn(N_t, N_y, N_x)
 
-Calculate the mean time series, ``x_mean[N_t]``
+Average over the outer axes (``x``, ``y``) to construct a time series,
+``x_mean``
+
+*Note: Adapt to SST or something?*
 
 
 Solution
 ========
 
-One solution is to unravel the space dims
-
-.. code:: python
-
-   x_mean = x.reshape(N_t, N_y * N_x).mean(axis=1)
-
-This is slightly more general:
+One solution is to unravel the outer axes:
 
 .. code:: python
 
    x_mean = x.reshape(N_t, -1).mean(axis=-1)
 
-or use multidimensional axes:
+or set a multidimensional axis:
 
 .. code:: python
 
    x_mean = x.mean(axis=(1, 2))
+
+or take the functional approach:
+
+.. code:: python
+
+   x_mean = np.apply_over_axes(np.sum, x, (1, 2))
 
 
 Boolean arrays

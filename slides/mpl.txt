@@ -81,35 +81,36 @@ Basic labeling and markup:
    plt.grid()
    plt.axis([xmin, xmax, ymin, ymax])
 
-Most of this was inspired by Matlab.
-
 
 Exercise
 ========
 
-Load the sea surface temperature and plot the time series for the mean global
-sea surface (SST vs time)
+1. Use ``cumsum()`` and ``random.randn()`` to create three random walk time
+   series, and plot them on a single figure.
 
-Maybe we can use area-weighted cells to do a (T * dA) / A calculation? (and
-masked). We did dx and dy so adding dA should be OK.
+2. Load the sea surface temperature and plot the time series for the mean global
+   sea surface (SST vs time).
+
+   *OK to ignore area-weighting here? Should we do that somewhere else?*
 
 
 Solution
 ========
-TODO: Move SST mean calculation to an older exercise?
 
-.. code:: python
+1. .. code:: python
 
-   sst_nc = nc.Dataset('sst.nc', 'r')
-   t = sst_nc.variables['initial_time0_hours'][:]
-   sst = sst_nc.variables['SSTK_GDS0_SFC'][:]
+      x_walk = np.cumsum(np.random.randn(101, 3),
+                         axis=1)
+      plt.plot(x_walk)
 
-   # This needs to be area-weighted
-   sst_mean = np.mean(sst.reshape(sst.shape[0], -1),
-                      axis=-1)
+2. .. code:: python
 
-   plt.plot((t - t[0]) / 24., sst_mean - 273.15)
-   plt.show()
+      sst_nc = nc.Dataset('sst.nc', 'r')
+      t = sst_nc.variables['initial_time0_hours'][::2]
+      sst = sst_nc.variables['SSTK_GDS0_SFC'][::2]
+
+      sst_mean = np.mean(sst, axis=(1,2)) - 273.15)
+      plt.plot((t - t[0]) / 24., sst_mean)
 
 
 Plot objects
@@ -182,11 +183,7 @@ Pixel plots are also popular:
    z_ext = (x_ax[0], x_ax[-1], y_ax[0], y_ax[-1])
    plt.imshow(z, origin='lower', extent=z_ext)
 
-``pcolor`` is prettier but *slow*. Use ``pcolormesh``:
-
-.. code:: python
-
-   plt.pcolormesh(x, y, z)
+   plt.pcolormesh(x, y, z)   # Faster than pcolor
 
 
 mplot3d

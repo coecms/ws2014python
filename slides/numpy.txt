@@ -205,6 +205,8 @@ Exercise
 
 2. Calculate the sum of the first :math:`N` integers, up to :math:`N = 100`.
 
+*Note: Exercise 2 sucks, need a better one*
+
 
 Solution
 ========
@@ -323,5 +325,3 @@ Basic concepts:
 * Create grids: ``meshgrid``
 
 * **Vectorize your code**
-
-Next, how to load data?
