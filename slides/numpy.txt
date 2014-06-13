@@ -338,6 +338,8 @@ Basic concepts:
 
 * Vectorized functions: ``sin``, ``exp``, ``sum``, ``mean``
 
+* Reduction operators: ``sum``, ``mean``, ``max``, ...
+
 * Create grids: ``meshgrid``
 
 * **Vectorize your code**

@@ -532,19 +532,26 @@ If you prefer index arrays, use ``nonzero``:
 
 Masked Arrays
 =============
-TODO: Explanation
+
+Use masks to only manipulate a subset of your data:
 
 .. code:: python
 
    x = np.random.randn(3, 4)
    x_m = np.ma.masked_array(x, x > 0.)
 
-
-Exercise
-========
-TODO: Need a masked array exercise
+Masked arrays can be very convenient, but bugs are
 
 
 Summary
 =======
-TODO
+
+* Contiguous vs. strided vs. scattered
+
+* Views vs. copies
+
+* Broadcasting rules (+ ``newaxis``)
+
+* Index arrays
+
+* Masked arrays
