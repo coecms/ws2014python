@@ -205,8 +205,6 @@ Exercise
 
 2. Calculate the sum of the first :math:`N` integers, up to :math:`N = 100`.
 
-*Note: Exercise 2 sucks, need a better one*
-
 
 Solution
 ========
@@ -244,6 +242,24 @@ Initialize ``z`` with the shape of ``x``:
    z = np.zeros_like(x)
 
 (also ``empty_like`` and ``ones_like``)
+
+
+Multidim reduction
+==================
+
+Reduction operators can be applied across an axis:
+
+.. code:: python
+
+   >> x = np.arange(12).reshape(3, 4)
+   >> x.sum(axis=0)
+   array([12, 15, 18, 21])
+
+Some lucky people (1.7+) can use multidimensional axes:
+
+   >> x = np.arange(24).reshape(2, 3, 4)
+   >> x.sum(axis=(0,2))
+   array([ 60,  92, 124])
 
 
 Multidimensional indexing

@@ -186,6 +186,22 @@ Pixel plots are also popular:
    plt.pcolormesh(x, y, z)   # Faster than pcolor
 
 
+Image arrays
+============
+
+Images can be loaded and plotted just like numerical data:
+
+.. code:: python
+
+      from scipy.misc import imread
+
+      img = imread('data.jpg')
+
+      plt.imshow(img)
+
+``img`` is a RGB-array of shape ``(N_y, N_x, 3)``
+
+
 mplot3d
 =======
 

@@ -334,7 +334,7 @@ For this random matrix:
    N_t, N_y, N_x = 50, 37, 73
    x = np.random.randn(N_t, N_y, N_x)
 
-Average over the outer axes (``x``, ``y``) to construct a time series,
+average over the outer axes (``x``, ``y``) to construct a time series,
 ``x_mean``
 
 
@@ -514,21 +514,20 @@ or just
 Boolean index arrays
 ====================
 
-Set the negative values to zero:
+These are similar to index arrays (and easier to use)
+
+To replace negative values of an array to zero:
 
 .. code:: python
 
    x = np.random.randn(10, 10)
-   neg_mask = x < 0.
-   x[neg_mask] = 0.
+   x[x < 0] = 0.
 
-Or just save a line
+If you prefer index arrays, use ``nonzero``:
 
 .. code:: python
 
-   x[x < 0] = 0.
-
-TODO: Needs ``nonzeros`` example
+   idx = np.nonzero(x < 0)
 
 
 Masked Arrays
@@ -537,8 +536,8 @@ TODO: Explanation
 
 .. code:: python
 
-   x = np.random.rand(3, 4)
-   x_m = np.ma.masked_array(x, x > 0.5)
+   x = np.random.randn(3, 4)
+   x_m = np.ma.masked_array(x, x > 0.)
 
 
 Exercise
