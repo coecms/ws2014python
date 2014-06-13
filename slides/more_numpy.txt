@@ -455,6 +455,24 @@ Use a list of index arrays:
    array([  1,  36, 121])
 
 
+Index grid generation
+=====================
+
+Two useful functions for generating index arrays
+
+.. code:: python
+
+   >> np.mgrid[:2,:3]
+   array([ [[0, 0, 0],
+            [1, 1, 1]],
+           [[0, 1, 2],
+            [0, 1, 2]] ])
+
+   >> np.ogrid[:2,:3]
+   [ array([[0],  ,  array([[0, 1, 2]]) ]
+            [1]])
+
+
 Exercise
 ========
 
@@ -472,6 +490,7 @@ How do I vectorise this loop?
    for j in range(6):
       for i in range(5):
          y[j, i] = x[idx[j, i], j, i]
+
 
 Solution
 ========
@@ -492,9 +511,8 @@ or just
 (``ogrid`` broadcasts to ``mgrid``)
 
 
-Boolean arrays
-==============
-TODO: Needs ``nonzeros`` example
+Boolean index arrays
+====================
 
 Set the negative values to zero:
 
@@ -509,6 +527,8 @@ Or just save a line
 .. code:: python
 
    x[x < 0] = 0.
+
+TODO: Needs ``nonzeros`` example
 
 
 Masked Arrays
