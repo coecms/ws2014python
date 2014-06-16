@@ -533,14 +533,15 @@ If you prefer index arrays, use ``nonzero``:
 Masked Arrays
 =============
 
-Use masks to only manipulate a subset of your data:
+Use masks to carry a criterion across operations:
 
 .. code:: python
 
    x = np.random.randn(3, 4)
    x_m = np.ma.masked_array(x, x > 0.)
 
-Masked arrays can be very convenient, but bugs are
+Masked arrays can be very convenient, but be prepared to handle occasional
+bugs.
 
 
 Summary
@@ -553,5 +554,3 @@ Summary
 * Broadcasting rules (+ ``newaxis``)
 
 * Index arrays
-
-* Masked arrays

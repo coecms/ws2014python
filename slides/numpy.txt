@@ -255,7 +255,9 @@ Reduction operators can be applied across an axis:
    >> x.sum(axis=0)
    array([12, 15, 18, 21])
 
-Some lucky people (1.7+) can use multidimensional axes:
+NumPy 1.7+(?) can use multidimensional axes:
+
+.. code:: python
 
    >> x = np.arange(24).reshape(2, 3, 4)
    >> x.sum(axis=(0,2))
