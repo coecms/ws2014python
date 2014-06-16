@@ -502,7 +502,7 @@ Use ``mgrid`` (or ``ogrid``) and fancy indexing:
    J, I = np.mgrid[:5, :6]
    y = x[[idx, J, I]]
 
-or just
+List brackets can also be implicit:
 
 .. code:: python
 
@@ -551,6 +551,6 @@ Summary
 
 * Views vs. copies
 
-* Broadcasting rules (+ ``newaxis``)
+* Broadcasting (and ``newaxis``) rules
 
 * Index arrays

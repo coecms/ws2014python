@@ -91,7 +91,7 @@ Exercise
 2. Load the sea surface temperature and plot the time series for the mean global
    sea surface (SST vs time).
 
-   *Ignore area-weighted mean, just do spatial mean values*
+   (Ignore area-weighted mean, just do average the spatial values)
 
 
 Solution

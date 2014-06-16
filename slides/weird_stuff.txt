@@ -41,12 +41,6 @@ where
 Useful for indexing apparently
 
 
-mgrid and ogrid
----------------
-I forgot
-Nowadays I just use meshgrid
-
-
 hstack and vstack
 -----------------
 I feel like these must be useful but I never use them
@@ -58,11 +52,6 @@ Hard stuff
 dtype tuples, recarray
 ----------------------
 Cool but often ineffeicient
-
-strides
--------
-This is a trendy topic, and essential to advanced numpy performance, but
-perhaps too advanced?
 
 
 cache line
